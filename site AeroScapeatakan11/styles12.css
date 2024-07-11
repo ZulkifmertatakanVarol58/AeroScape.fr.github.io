@@ -1,0 +1,411 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1A1A1A; /* Dark background color */
+    color: #F1F1F1; /* Light text color */
+}
+
+nav {
+    background-color: #222;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+nav:hover {
+    background-color: #333;
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
+
+header {
+    background: linear-gradient(-119deg, #74B087, #DE7300, #74B087);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 20px;
+    transition: background 0.5s;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 48px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    background-color: #2B2B2B; /* Darker section background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.7); /* Darker hover shadow */
+}
+
+section h2 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #74B087; /* Light green text color */
+    animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #222;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: left;
+    }
+}
+
+/* Styles for the cookie notification */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideIn 0.5s;
+}
+
+.cookie-banner p {
+    margin: 0;
+    padding: 0 10px;
+    display: inline-block;
+}
+
+.cookie-banner button {
+    background-color: #74B087; /* Light green button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cookie-banner button:hover {
+    background-color: #5E926F; /* Darker green on hover */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Darker shadow */
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Styles pour les boutons de navigation */
+.carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+.carousel button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel .prev {
+    left: 10px;
+}
+
+.carousel .next {
+    right: 10px;
+}
+
+/* Styles for the footer */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style for the logo */
+.logo {
+    width: 13%;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Styles for the chatbot */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    overflow: hidden;
+    background: white;
+    display: none;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: linear-gradient(to right, #74B087, #DE7300, #74B087);
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.chat-messages {
+    height: 200px;
+    padding: 10px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(to right, #74B087, #DE7300, #74B087);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.chat-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.chat-button:hover {
+    transform: scale(1.1);
+    background-color: #5E926F; /* Darker green on hover */
+}
+
+/* Styles pour la section des avis */
+#avis-section {
+    background-color: #2B2B2B; /* Darker section background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#avis-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.7); /* Darker hover shadow */
+}
+
+#avis-form {
+    margin-bottom: 10px;
+}
+
+#avis-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #F1F1F1;
+}
+
+#avis-form input[type="text"],
+#avis-form input[type="email"],
+#avis-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+background-color: #3B3B3B;
+color: #F1F1F1;
+    box-sizing: border-box;
+    background-color: #3B3B3B;
+    color: #F1F1F1;
+}
+
+#avis-form textarea {
+    height: 100px;
+}
+
+#avis-form button[type="submit"] {
+    background-color: #DE7300;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#avis-form button[type="submit"]:hover {
+    background-color: #C16200;
+}
+
+/* Styles pour la liste des avis */
+#avis-list {
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #2B2B2B;
+    color: #F1F1F1;
+}
+
+.avis-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #3B3B3B;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #F1F1F1;
+}
+
+.avis-item p {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.avis-item button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.avis-item button:hover {
+    background-color: #e53935;
+}

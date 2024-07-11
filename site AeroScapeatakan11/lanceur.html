@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Espace - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Espace</h1>
+        <div class="article">
+            <h2>Les lanceurs spatiaux</h2>
+<h5><u>Cette page contient: 11chapitres</u></h5>
+<hr>
+            <img src="astronaute1.jpg" alt="Les premières missions spatiales">
+            <p><br><br><h1><u>Chapitre 1 : Introduction aux Lanceurs Spatiaux</u></h1>
+
+<strong>Les lanceurs spatiaux sont essentiels pour envoyer des satellites, des sondes et des équipages humains dans l'espace. Depuis les premiers jours de l'exploration spatiale, ces véhicules ont évolué pour devenir plus puissants, plus fiables et plus économiques. L'avenir des lanceurs spatiaux promet des innovations encore plus grandes, avec des objectifs ambitieux allant de l'exploration planétaire au tourisme spatial.</strong>
+
+<br><br><h1><u>Chapitre 2 : L'Histoire des Lanceurs Spatiaux</u></h1>
+
+<strong>L'histoire des lanceurs spatiaux commence avec le lancement du satellite Spoutnik par l'Union soviétique en 1957. Ce lancement historique, suivi de près par les États-Unis avec le lancement de l'Explorer 1 en 1958, a marqué le début de l'ère spatiale. Depuis lors, des milliers de lancements ont eu lieu, propulsant des satellites de communication, des missions scientifiques et des équipages humains dans l'espace.</strong>
+
+<br><br><h1><u>Chapitre 3 : Les Lanceurs Traditionnels</u></h1>
+
+<strong>Les lanceurs traditionnels, comme la fusée Saturn V utilisée pour les missions Apollo, étaient des véhicules à usage unique. Ces lanceurs étaient incroyablement puissants mais coûtaient cher à produire et à lancer. Les technologies de propulsion chimique, principalement basées sur des carburants liquides et solides, ont dominé cette ère, offrant une poussée nécessaire pour atteindre l'orbite terrestre et au-delà.</strong>
+
+<br><br><h1><u>Chapitre 4 : L'Émergence des Lanceurs Réutilisables</u></h1>
+
+<strong>Les lanceurs réutilisables représentent une révolution dans l'industrie spatiale. SpaceX, avec sa fusée Falcon 9, a démontré que les lanceurs peuvent être récupérés et réutilisés, réduisant ainsi les coûts de lancement de manière significative. Cette innovation ouvre la voie à des lancements plus fréquents et plus abordables, facilitant l'accès à l'espace pour une variété de missions.</strong>
+
+<br><br><h1><u>Chapitre 5 : Les Nouvelles Technologies de Propulsion</u></h1>
+
+<strong>Les nouvelles technologies de propulsion promettent de transformer les lanceurs spatiaux. Des moteurs à propulsion électrique, nucléaire et même à fusion sont en cours de développement. Ces technologies pourraient offrir des voyages plus rapides et plus efficaces vers les destinations lointaines, y compris Mars et les autres planètes du système solaire.</strong>
+
+<br><br><h1><u>Chapitre 6 : Les Lanceurs Ultra-lourds</u></h1>
+
+<strong>Les lanceurs ultra-lourds, comme le Space Launch System (SLS) de la NASA et le Starship de SpaceX, sont conçus pour transporter des charges utiles très lourdes et des équipages humains vers la Lune, Mars et au-delà. Ces lanceurs joueront un rôle crucial dans les futures missions d'exploration planétaire et la construction de bases spatiales.</strong>
+
+<br><br><h1><u>Chapitre 7 : Les Lanceurs Privés</u></h1>
+
+<strong>Le secteur privé joue un rôle croissant dans le développement des lanceurs spatiaux. Des entreprises comme Blue Origin, Rocket Lab et Relativity Space innovent avec de nouvelles conceptions de fusées et des approches de lancement. La concurrence accrue stimule l'innovation et réduit les coûts, rendant l'accès à l'espace plus accessible pour les gouvernements, les entreprises et même les particuliers.</strong>
+
+<br><br><h1><u>Chapitre 8 : Le Tourisme Spatial et les Lanceurs</u></h1>
+
+<strong>Le tourisme spatial est un domaine émergent qui dépend des lanceurs spatiaux. SpaceX, Blue Origin et Virgin Galactic travaillent tous sur des systèmes de lancement qui peuvent transporter des touristes spatiaux en orbite basse ou en vols suborbitaux. Cette nouvelle industrie pourrait ouvrir l'espace à des centaines, voire des milliers de personnes chaque année.</strong>
+
+<br><br><h1><u>Chapitre 9 : La Collaboration Internationale</u></h1>
+
+<strong>La collaboration internationale est essentielle pour le développement des lanceurs spatiaux. Des programmes comme Arianespace en Europe et des collaborations entre la NASA et Roscosmos démontrent l'importance du travail conjoint. Ces partenariats permettent de partager les coûts, de combiner les expertises et de réaliser des missions plus ambitieuses.</strong>
+
+<br><br><h1><u>Chapitre 10 : Les Défis Technologiques</u></h1>
+
+<strong>Le développement de nouveaux lanceurs spatiaux présente des défis technologiques considérables. La gestion de la chaleur, la réduction des vibrations et l'amélioration de l'efficacité énergétique sont des domaines clés de recherche. De plus, la miniaturisation des composants et l'utilisation de matériaux avancés joueront un rôle crucial dans la prochaine génération de lanceurs.</strong>
+
+<br><br><h1><u>Chapitre 11 : Les Implications Environnementales</u></h1>
+
+<strong>Les lanceurs spatiaux ont des impacts environnementaux, notamment en termes d'émissions de gaz à effet de serre et de débris spatiaux. La recherche se concentre sur le développement de carburants plus propres et de technologies de déorbitation pour minimiser ces impacts. Les politiques de réglementation environnementale joueront également un rôle crucial pour garantir un développement spatial durable.</strong>
+
+<br><br><h1><u>Conclusion : Un Futur Prometteur</u></h1>
+
+<strong>L'avenir des lanceurs spatiaux est rempli de promesses et de possibilités. Avec les innovations technologiques en cours, les collaborations internationales et l'émergence du secteur privé, les lanceurs spatiaux deviendront plus efficaces, plus économiques et plus écologiques. Ces avancées ouvriront de nouvelles frontières pour l'exploration spatiale, le tourisme spatial et les missions interplanétaires, transformant notre vision de ce qui est possible dans l'espace.</strong></p>
+        </div>
+
+        
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>

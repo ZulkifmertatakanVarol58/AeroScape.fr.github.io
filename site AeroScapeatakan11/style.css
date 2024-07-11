@@ -1,0 +1,111 @@
+/* Reset de la marge et du remplissage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style de base pour le corps */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+/* Style de base pour la classe container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style pour le header */
+.header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Style pour le titre h1 */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+/* Style pour les sections de contenu */
+.lesson {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Style pour les boutons */
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buttons button {
+    background-color: #4CAF50; /* Vert */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.buttons button:hover {
+    background-color: #45a049; /* Vert foncé */
+}
+
+.run-button {
+    background-color: #f44336; /* Rouge */
+}
+
+.run-button:hover {
+    background-color: #da190b; /* Rouge foncé */
+}
+
+.extra-button {
+    background-color: #008CBA; /* Bleu */
+}
+
+.extra-button:hover {
+    background-color: #0073e6; /* Bleu foncé */
+}
+
+/* Style pour le conteneur de sortie */
+#output-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Style pour le texte dans le conteneur de sortie */
+#output-container p {
+    margin-bottom: 5px;
+}
+
+/* Style pour le bouton Accueil */
+.home-button {
+    background-color: #ff9800; /* Orange */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.home-button:hover {
+    background-color: #e68a00; /* Orange foncé */
+}

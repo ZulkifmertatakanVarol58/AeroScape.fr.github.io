@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprenez à coder avec AI Coding Tutor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material-darker.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index70.html" class="home-button">Accueil</a> <!-- Le bouton Accueil est ajouté ici -->
+        </div>
+        <h1>Apprenez à coder avec AI Coding Tutor</h1>
+        <div class="lesson">
+            <h2>Introduction au JavaScript</h2>
+            <p>JavaScript est un langage de programmation utilisé pour créer des interactions dynamiques sur les sites web. Voici un exemple de code JavaScript :</p>
+            <pre><code>console.log("Hello, world!");</code></pre>
+            <p>Essayez de modifier le code ci-dessous et d'exécuter pour voir les résultats :</p>
+            <textarea id="code-editor">console.log("Hello, world!");</textarea>
+            <div class="buttons">
+                <button onclick="openFile()">Ouvrir un fichier</button>
+                <button onclick="undo()">Annuler</button>
+                <button onclick="redo()">Rétablir</button>
+                <button class="run-button" onclick="runCode()">Exécuter le code</button>
+            </div>
+            <div id="output-container"></div>
+            <button id="monBouton" class="extra-button">Bouton d'exemple</button>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" style="display: none;" onchange="loadFile(event)">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <script>
+        let editor;
+        let history = [];
+        let currentPosition = -1;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+                lineNumbers: true,
+                mode: "javascript",
+                theme: "material-darker",
+            });
+
+            // Sauvegarde de l'état initial dans l'historique
+            saveHistory(editor.getValue());
+        });
+
+        function runCode() {
+            const code = getCode();
+            const outputContainer = document.getElementById('output-container');
+            outputContainer.textContent = ''; // Réinitialise le contenu de la sortie
+            try {
+                const log = console.log;
+                console.log = function(message) {
+                    outputContainer.textContent += message + '\n';
+                };
+                eval(code); // Exécute le code JavaScript
+                console.log = log; // Réinitialise console.log
+            } catch (err) {
+                outputContainer.textContent = 'Erreur: ' + err.message;
+            }
+
+            // Sauvegarde de l'état actuel dans l'historique
+            saveHistory(code);
+        }
+
+        function undo() {
+            if (currentPosition > 0) {
+                currentPosition--;
+                editor.setValue(history[currentPosition]);
+            }
+        }
+
+        function redo() {
+            if (currentPosition < history.length - 1) {
+                currentPosition++;
+                editor.setValue(history[currentPosition]);
+            }
+        }
+
+        function getCode() {
+            return editor.getValue();
+        }
+
+        function saveHistory(code) {
+            if (currentPosition === history.length - 1 || history.length === 0) {
+                history.push(code);
+                currentPosition++;
+            } else {
+                history = history.slice(0, currentPosition + 1);
+                history.push(code);
+                currentPosition++;
+            }
+        }
+
+        function openFile() {
+            document.getElementById('fileInput').click();
+        }
+
+        function loadFile(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const code = e.target.result;
+                editor.setValue(code);
+                saveHistory(code);
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>

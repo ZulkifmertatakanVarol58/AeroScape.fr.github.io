@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couverture - AeroScape</title>
+    <link rel="stylesheet" href="styles1.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-QL6k50xVlBabRLcZslZpR/+cDt3LqpnCByF6C+GjE+TxrGb6Kg03A+xexJ+Jr6BiZlMg+uPII1J6UayRrB6c/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Texture étoilée */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+section {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre plus foncée */
+    max-width: 800px;
+}
+
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+#picture-galerie h2 {
+    color: #b30000;
+}
+
+#community-discussion h2 {
+    color: #00b300;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #0056b3;
+    color: #fff;
+    padding: 10px 50px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #004494;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 400px;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 14px;
+    color: white;
+}
+
+.links {
+    margin: 20px 0;
+}
+
+.link-button {
+    display: block;
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.link-button:hover {
+    background-color: #1558b0;
+}
+
+footer {
+    font-size: 12px;
+    color: #777;
+}
+
+footer a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    margin-top: 10px;
+}
+
+.cookie-buttons button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cookie-buttons button:hover {
+    background-color: #1558b0;
+}
+
+.link-button {
+    display: block;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.link-button:hover {
+    background-color: #0056b3;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stars {
+    color: gold;
+    margin-left: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+}
+
+.school-description {
+    margin-bottom: 15px;
+}
+
+footer {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: ;
+    bottom: 0;
+    width: 100%;
+}
+
+.contact-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact-section h1 {
+    font-size: 3em;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.contact-section h2 {
+    font-size: 2em;
+    margin: 5px 0 20px 0;
+    letter-spacing: 1px;
+}
+
+.separator {
+    height: 2px;
+    background-color: #fff;
+    width: 80px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.separator::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+    margin: 10px auto 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+}
+
+.contact-info h3 {
+    color: #87CEEB;
+    margin: 20px 0 10px 0;
+    font-size: 1.5em;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.contact-info p strong {
+    color: white;
+}
+
+.contact-info a {
+    color: #87CEEB;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.hero p {
+    color: white;
+}
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    z-index: -1;
+    animation: twinkle 2s infinite ease-in-out;
+    opacity: 0.8;
+}
+@keyframes slowScroll {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 1000px;
+    }
+}
+
+body {
+    animation: slowScroll 200s linear infinite;
+}
+.cta-button:hover, .link-button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+h2 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.cta-button {
+    animation: pulse 2s infinite;
+}
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.stars {
+    width: 1px;
+    height: 1px;
+    background: white;
+    position: absolute;
+    z-index: -1;
+    animation: twinkle 2s infinite ease-in-out;
+}
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+.starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.starfield::before, .starfield::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: moveStars 50s linear infinite;
+    opacity: 0.8;
+}
+.starfield::after {
+    animation-delay: 25s;
+}
+@keyframes meteor {
+    0% {
+        transform: translateY(0) translateX(0) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(1000px) translateX(-1000px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.meteor {
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    animation: meteor 2s infinite;
+    animation-delay: calc(-5s * var(--i));
+}
+@keyframes nebulous {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+body {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.8), black), url('https://www.transparenttextures.com/patterns/cubes.png');
+    background-size: cover;
+    animation: nebulous 60s linear infinite;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+.icon {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.icon:hover {
+    transform: rotate(360deg);
+}
+@keyframes colorChange {
+    0% { color: #ffcc00; }
+    25% { color: #ff00cc; }
+    50% { color: #00ffcc; }
+    75% { color: #ff4500; }
+    100% { color: #ffcc00; }
+}
+
+.color-changing-text {
+    animation: colorChange 5s infinite;
+}
+/* Style pour la barre de recherche avec un thème spatial */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background-color: #222;
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 300px;
+  outline: none;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px #007bff;
+}
+
+.search-container button {
+  padding: 12px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #666;
+}
+
+#visitorCount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Couleur bleue */
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+
+.visitor-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #007bff; /* Couleur bleue */
+}
+
+.visitor-counter i {
+    margin-right: 10px;
+}
+
+   </style>
+
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="linkimg.jpg"style="max-width:13%;height:auto;"alt="AeroScape Logo" class="logo">
+            <div class="language-switcher">
+                <a href="#" id="lang-fr" class="active">FR</a> | <a href="#" id="lang-en">EN</a>    <p>visiteurs: <span id="visitorCount">0</span></p>
+
+    <script>
+        // Fonction pour incrémenter le compteur de visiteurs
+        function incrementVisitorCount() {
+            if (!localStorage.getItem('visitorCount')) {
+                localStorage.setItem('visitorCount', 1);
+            } else {
+                let count = parseInt(localStorage.getItem('visitorCount'));
+                localStorage.setItem('visitorCount', count + 1);
+            }
+            updateVisitorCount();
+        }
+
+        // Fonction pour mettre à jour l'affichage du compteur de visiteurs
+        function updateVisitorCount() {
+            document.getElementById('visitorCount').textContent = localStorage.getItem('visitorCount');
+        }
+
+        // Mettre à jour le compteur dès que la page est chargée
+        document.addEventListener('DOMContentLoaded', () => {
+            incrementVisitorCount();
+        });
+// Fonction pour incrémenter et mettre à jour le compteur de visiteurs
+        function incrementVisitorCount() {
+            if (!localStorage.getItem('visitorCount')) {
+                localStorage.setItem('visitorCount', 1);
+            } else {
+                let count = parseInt(localStorage.getItem('visitorCount'));
+                localStorage.setItem('visitorCount', count + 1);
+            }
+            updateVisitorCount();
+        }
+
+        // Fonction pour mettre à jour l'affichage du compteur de visiteurs
+        function updateVisitorCount() {
+            document.getElementById('visitorCount').textContent = localStorage.getItem('visitorCount');
+        }
+
+        // Mettre à jour le compteur dès que la page est chargée
+        document.addEventListener('DOMContentLoaded', () => {
+            incrementVisitorCount();
+        });
+    </script>
+            </div>
+            <div class="menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <nav id="nav-menu" class="nav-menu">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#aeronautique">Aéronautique</a></li>
+                <li><a href="#aerospatial">Aérospatial</a></li>
+                <li><a href="#espace">Espace</a></li>
+                <li><a href="#picture-galerie">Picture Galerie AéroScape</a></li>
+                <li><a href="#community-discussion">Community Discussion</a></li>
+                <li><a href="#contraste-eleve">Contraste Élevé</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="overlay">
+                <h1>Bienvenue sur AeroScape</h1>
+                <p>
+                    AeroScape est votre destination incontournable pour tout ce qui concerne l'actualité et les innovations dans les domaines de l'aéronautique, de l'aérospatial et de l'exploration spatiale. Que vous soyez un passionné de sciences, un professionnel du secteur ou simplement curieux de découvrir les mystères de l'univers, AeroScape vous offre une mine d'informations et de ressources captivantes.
+                </p>
+ <a id="cta-button" href="index58.html" class="cta-button">Partenariat avec: CosmoVue (site sur l'astronomie et l'astrophysique.)<br> !Cliquez-ici!</a>
+<a id="cta-button" href="index1.html" class="cta-button">Aller sur notre site AéroScape, pour les passionnés de l'espace et de l'air.</a>
+<a id="cta-button" href="index70.html" class="cta-button">Partenariat avec CodeZ</a>
+            </div>
+        </section>
+
+<!-- Structure HTML pour la barre de recherche -->
+
+<section id="Description Restrictions d'Utilisation">
+            <h2>Restrictions d'Utilisation</h2>
+            <p>
+                “Avant de débuter votre navigation, veuillez prendre un moment pour accepter nos restrictions d’utilisation en cliquant sur le lien situé en bas de cette page. Ces restrictions sont conçues pour assurer une expérience sûre et respectueuse pour tous nos utilisateurs.
+
+Si vous ne trouvez pas le lien, vous pouvez également accéder à notre site et suivre ces étapes simples : rendez-vous dans le menu principal, sélectionnez ‘En Savoir Plus’, puis cliquez sur ‘Restrictions d’Utilisation’ pour explorer en détail nos politiques et conditions d’utilisation.
+
+Nous vous remercions pour votre coopération et votre compréhension. N’hésitez pas à nous contacter si vous avez des questions ou des préoccupations.”
+            </p>
+        </section>
+        <section id="aeronautique">
+            <h2>Aéronautique</h2>
+            <p>
+                Suivez les dernières nouvelles et les développements majeurs dans le domaine de l'aviation. Découvrez les innovations technologiques, les améliorations en matière de sécurité aérienne et les tendances de l'industrie aéronautique mondiale.
+            </p>
+        </section>
+
+        <section id="aerospatial">
+            <h2>Aérospatial</h2>
+            <p>
+                Restez informé sur les lancements de fusées, le développement des véhicules spatiaux et les projets d'habitats spatiaux. Apprenez-en plus sur les expériences scientifiques en microgravité et leurs implications pour notre avenir.
+            </p>
+        </section>
+
+        <section id="espace">
+            <h2>Espace</h2>
+            <p>
+                Obtenez les dernières informations sur l'exploration spatiale, des missions vers la Lune et Mars aux découvertes astronomiques. Découvrez les technologies spatiales innovantes qui nous permettent d'explorer plus loin.
+            </p>
+        </section>
+
+        <section id="picture-galerie">
+            <h2>Picture Galerie AéroScape</h2>
+            <p>
+                Admirez une collection d'images époustouflantes et de rendus artistiques liés à l'aéronautique, à l'aérospatial et à l'exploration de l'espace. 
+            </p>
+        </section>
+
+        <section id="community-discussion">
+            <h2>Community Discussion</h2>
+            <p>
+                Rejoignez nos forums de discussion pour échanger sur des sujets spécifiques liés à l'aéronautique, à l'aérospatial et à l'exploration spatiale. Participez à des groupes d'intérêt et posez vos questions pour obtenir des réponses d'experts et de passionnés.
+            </p>
+        </section>
+<section id="École d'ingénieur pour les passionnés de l'air et de l'espace.">
+            <h2>École d'ingénieur pour les passionnés de l'air et de l'espace.</h2>
+  
+</head>
+<body>
+ 
+                <div class="rating">
+                    <a href="https://www.ipsa.fr" class="link-button">IPSA  ✈️🚀👨🏻‍🚀★★★★★</a>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <p>Institut Polytechnique des Sciences Avancées à Ivry-sur-Seine et Toulouse, spécialisé dans l'aéronautique et l'espace.</p>
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="https://www.isae-supaero.fr" class="link-button">ISAE-SUPAERO ✈️🚀★★★★★</a>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <p>Institut Supérieur de l'Aéronautique et de l'Espace à Toulouse, une référence mondiale en ingénierie aérospatiale.</p>
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="https://www.enac.fr" class="link-button">ENAC ✈️★★★★★</a>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <p>École Nationale de l'Aviation Civile à Toulouse, leader européen de la formation aéronautique.</p>
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="https://www.estaca.fr" class="link-button">ESTACA✈️⚙️★★★★☆</a>
+                    <span class="stars">★★★★☆</span>
+                </div>
+                <p>École Supérieure des Techniques Aéronautiques et de Construction Automobile à Saint-Quentin-en-Yvelines et Laval, spécialisée dans les transports.</p>
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="http://www.ensma.fr" class="link-button">ENSMA ✈️⚙️👷🏻‍♂️★★★★☆</a>
+                    <span class="stars">★★★★☆</span>
+                </div>
+                <p>École Nationale Supérieure de Mécanique et d'Aérotechnique à Poitiers, spécialisée dans l'ingénierie mécanique et aéronautique.</p>
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="https://www.ecole-air-espace.fr" class="link-button">École de l'Air🪖✈️★★★★☆</a>
+                    <span class="stars">★★★★☆</span>
+                </div>
+                <p>Située à Salon-de-Provence, cette école forme les officiers de l'Armée de l'Air et de l'Espace française.</p>
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="https://www.supmeca.fr" class="link-button">SUPMECA ⚙️👷🏻‍♂️★★★☆☆</a>
+                    <span class="stars">★★★☆☆</span>
+                </div>
+  <p>Supméca, ou Institut Supérieur de Mécanique de Paris, est une école d’ingénieurs française spécialisée dans la mécanique et l’ingénierie industrielle. </p>
+                
+            </div>
+
+            <div class="school-description">
+                <div class="rating">
+                    <a href="https://www.universite-paris-saclay.fr" class="link-button">Université Paris-Saclay🎓🏫★★★★☆ </a>
+                    <span class="stars">★★★★☆</span>
+                </div>
+                <p>Université proposant des formations spécialisées en aéronautique et espace à Paris-Saclay.</p>
+            </div>
+        </div>
+    
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+        </section>
+
+    </main>
+<section id="À propos">
+            <h2>À propos</h2>
+            <p>
+   <ul>
+    <li>En Savoir Plus:<a href="savoir.html">https://à-propos-aéroscape.fr</a></li>
+    <li>Outils de gestion de lien:<a href="link.html">https://liens-aéroscape.fr</a></li>
+    <li>Restrictions d'utilisation (à consulter avant la navigation sur le SiteWeb):<a href="rest.html">https://restrictions-aéroscape.fr</a></li>
+</ul>
+
+
+            </p>
+        </section>
+<div class="meteor" style="--i:0;"></div>
+<div class="meteor" style="--i:1;"></div>
+<div class="meteor" style="--i:2;"></div>
+<div class="meteor" style="--i:3;"></div>
+<footer>
+<body>
+    <div class="contact-section">
+        <h1>CONTACT</h1>
+        <h2>Contact AéroScape</h2>
+        <div class="separator"></div>
+        <div class="contact-info">
+            <h3>CONTACT PAR GMAIL OU TÉL :</h3>
+            <p><strong>Tél. :</strong> 0769637177</p>
+            <p><strong>Email :</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=scapeinfoaero@gmail.com" target="_blank">scapeinfoaero@gmail.com</a></p>
+        </div>
+    </div>
+</body>
+</footer>
+
+    
+
+    <script src="script1.js">// Exemple d'intégration de Google Analytics
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');</script>
+</body>
+</html>

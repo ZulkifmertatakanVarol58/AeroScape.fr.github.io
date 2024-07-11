@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Linktree</title>
+    <link rel="stylesheet" href="ss.css">
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #000;
+}
+
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+    background: #007bff;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.link:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icons img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.link {
+    text-decoration: none;
+    color: #fff;
+    background: #007bff;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.link:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.link {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.link:hover {
+    background: linear-gradient(135deg, #0056b3, #003c7a);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes stars {
+    0% {background-position: 0 0;}
+    100% {background-position: 1000px 1000px;}
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: stars 50s linear infinite;
+    z-index: 0;
+}
+.link {
+    text-decoration: none;
+    color: #fff;
+    background: #1e90ff;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 5px #1e90ff; }
+    50% { box-shadow: 0 0 20px #1e90ff; }
+    100% { box-shadow: 0 0 5px #1e90ff; }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Trois colonnes égales */
+    gap: 20px; /* Espacement entre les éléments */
+}
+
+.grid-item {
+    background-color: #f0f0f0; /* Couleur de fond des éléments */
+    padding: 10px; /* Espacement interne */
+}
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+body {
+    touch-action: none; /* Empêche le zoom par le toucher sur les appareils mobiles */
+    user-scalable: no; /* Empêche le zoom par les gestes de zoom du navigateur */
+    -ms-content-zooming: none; /* Empêche le zoom sur Internet Explorer */
+    -ms-user-select: none; /* Empêche la sélection de texte sur Internet Explorer */
+    -moz-user-select: none; /* Empêche la sélection de texte sur Firefox */
+    -webkit-user-select: none; /* Empêche la sélection de texte sur Safari et Chrome */
+    -webkit-touch-callout: none; /* Empêche le menu contextuel au toucher sur Safari */
+    zoom: 100%; /* Empêche également le zoom sur certains navigateurs */
+}
+</style>
+</head>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .logo {
+            max-width: 100px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .links .link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .links .link:hover {
+            background-color: #0056b3;
+        }
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Links */
+.links {
+    margin: 20px 0;
+}
+
+.link {
+    text-decoration: none;
+    color: #007BFF;
+    margin: 0 10px;
+}
+
+/* Button */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Formulaire de souscription */
+.form-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.form-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form-logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+form input[type="email"], form input[type="checkbox"] {
+    margin: 10px 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+/* styles.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2em;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.link {
+    margin-right: 20px;
+}
+
+.subscribe-form {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+/* styles.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2em;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.link {
+    margin-right: 20px;
+}
+
+.subscribe-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; /* couleur de fond */
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333; /* couleur du texte */
+}
+
+.subscribe-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.subscribe-form input[type="submit"] {
+    background-color: #4CAF50; /* couleur de fond du bouton */
+    color: white; /* couleur du texte du bouton */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.subscribe-form input[type="submit"]:hover {
+    background-color: #45a049; /* couleur de fond du bouton au survol */
+}
+/* styles.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2em;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.link {
+    margin-right: 20px;
+}
+
+.subscribe-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #1a1a1a; /* Couleur de fond sombre */
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #ffffff; /* Couleur du texte blanc */
+    text-transform: uppercase;
+}
+
+.subscribe-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff; /* Couleur du texte blanc */
+}
+
+.subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc; /* Bordure grise */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #333333; /* Couleur de fond gris foncé */
+    color: #ffffff; /* Couleur du texte blanc */
+}
+
+.subscribe-form input[type="submit"] {
+    background-color: #4CAF50; /* Couleur de fond vert */
+    color: white; /* Couleur du texte blanc */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form input[type="submit"]:hover {
+    background-color: #45a049; /* Couleur de fond vert au survol */
+}
+/* styles.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2em;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.link {
+    margin-right: 20px;
+}
+
+.subscribe-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #1a1a1a; /* Couleur de fond sombre */
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #ffffff; /* Couleur du texte blanc */
+    text-transform: uppercase;
+}
+
+.subscribe-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff; /* Couleur du texte blanc */
+}
+
+.subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc; /* Bordure grise */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #333333; /* Couleur de fond gris foncé */
+    color: #ffffff; /* Couleur du texte blanc */
+}
+
+.subscribe-form input[type="submit"] {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Couleur du texte blanc */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form input[type="submit"]:hover {
+    background-color: #45a049; /* Couleur de fond verte au survol */
+}
+
+/* Bouton S'abonner */
+.subscribe-btn {
+    background-color: #337ab7; /* Couleur de fond bleue */
+    color: white; /* Couleur du texte blanc */
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background-color: #286090; /* Couleur de fond bleue foncée au survol */
+}
+/* styles.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2em;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.link {
+    margin-right: 20px;
+}
+
+.subscribe-form {
+    display: none;
+    position: fixed; /* Position fixe pour centrer */
+    top: 50%; /* Déplacer le haut à 50% du haut de la fenêtre */
+    left: 50%; /* Déplacer la gauche à 50% du côté de la fenêtre */
+    transform: translate(-50%, -50%); /* Centrer le formulaire */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #1a1a1a; /* Couleur de fond sombre */
+    z-index: 1000; /* Mettre au premier plan */
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #ffffff; /* Couleur du texte blanc */
+    text-transform: uppercase;
+}
+
+.subscribe-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff; /* Couleur du texte blanc */
+}
+
+.subscribe-form input[type="email"] {
+    width: calc(100% - 40px); /* Largeur moins les paddings */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc; /* Bordure grise */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #333333; /* Couleur de fond gris foncé */
+    color: #ffffff; /* Couleur du texte blanc */
+}
+
+.subscribe-form input[type="submit"] {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Couleur du texte blanc */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form input[type="submit"]:hover {
+    background-color: #45a049; /* Couleur de fond verte au survol */
+}
+
+/* styles.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2em;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.link {
+    margin-right: 20px;
+}
+
+.subscribe-form {
+    display: none;
+    position: fixed; /* Position fixe pour centrer */
+    top: 50%; /* Déplacer le haut à 50% du haut de la fenêtre */
+    left: 50%; /* Déplacer la gauche à 50% du côté de la fenêtre */
+    transform: translate(-50%, -50%); /* Centrer le formulaire */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Couleur de fond blanche */
+    z-index: 1000; /* Mettre au premier plan */
+    width: 80%; /* Largeur du formulaire */
+    max-width: 500px; /* Largeur maximale du formulaire */
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333333; /* Couleur du titre */
+    text-transform: uppercase;
+}
+
+.subscribe-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555555; /* Couleur du texte gris foncé */
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.subscribe-form input[type="email"] {
+    width: calc(100% - 20px); /* Largeur moins les paddings */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc; /* Bordure grise */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #f5f5f5; /* Couleur de fond gris clair */
+    color: #333333; /* Couleur du texte gris foncé */
+    transition: border-color 0.3s ease;
+}
+
+.subscribe-form input[type="email"]:focus {
+    border-color: #4CAF50; /* Bordure verte au focus */
+}
+
+.subscribe-form input[type="submit"] {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Couleur du texte blanc */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form input[type="submit"]:hover {
+    background-color: #45a049; /* Couleur de fond verte au survol */
+}
+
+/* Message de remerciement */
+#thankYouMessage {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #4CAF50; /* Couleur du texte verte */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="linkimg.jpg" alt="Logo IPSA" class="logo">
+        <p class="subtitle">✈️ SiteWeb AéroScape site sur l'aérospatiale, aéronautique et de l'espace(SWAAE)🚀</p>
+        <div class="links">
+            <a href="index.html" class="link">AéroScape🚀</a>
+            <a href="https://www.instagram.com/atkn.varoll" target="_blank" class="link">Instagram🌐</a>
+                 <button id="subscribeBtn" class="subscribe-btn" onclick="toggleSubscribeForm()">S'abonner</button>
+        </div>
+        <div id="subscribeForm" class="subscribe-form">
+            <h2>Abonnement à AéroScape</h2>
+            <form action="process_subscription.php" method="POST">
+                <label for="email">Adresse email :</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <input type="submit" value="S'abonner">
+            </form>
+        </div>
+    </div>
+
+    <script>// script.js
+function toggleSubscribeForm() {
+    var form = document.getElementById("subscribeForm");
+    if (form.style.display === "none") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+}
+function toggleForm() {
+            const formContainer = document.getElementById('subscribeFormContainer');
+            formContainer.style.display = formContainer.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function subscribe(event) {
+            event.preventDefault();
+            alert('Merci pour votre abonnement !');
+            toggleForm();
+        }
+
+</script>
+</body>
+</html>

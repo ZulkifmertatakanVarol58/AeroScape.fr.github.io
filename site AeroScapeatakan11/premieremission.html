@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Espace - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Espace</h1>
+        <div class="article">
+            <h2>Les premières missions spatiales</h2>
+<h5><u>Cette page contient: 8 chapitres</u></h5>
+<hr>
+            <img src="astronaute1.jpg" alt="Les premières missions spatiales">
+            <p><h1><u>Chapitre 1 : Les Premières Étincelles de l'Aventure Spatiale</u></h1>
+
+<strong>Au milieu du XXe siècle, l’humanité s’apprêtait à franchir une nouvelle frontière, celle de l’espace. C’était une époque marquée par une intense compétition entre les deux superpuissances mondiales de l’époque : les États-Unis et l'Union soviétique. Cette rivalité, connue sous le nom de Guerre froide, allait propulser l'humanité au-delà des limites de notre atmosphère.
+<br><br>
+Tout commença un jour d'octobre 1957. Le 4 octobre, l'Union soviétique lança Spoutnik 1, le premier satellite artificiel. C’était une simple sphère de métal équipée d’antennes, mais son lancement fut un choc pour le monde entier. Le bip-bip régulier de Spoutnik 1, émis depuis l'espace, était bien plus qu'un simple signal radio. C’était le son de l'humanité entrant dans une nouvelle ère. À ce moment précis, l'exploration spatiale cessa d'être une simple fiction pour devenir une réalité tangible.
+
+La surprise et l'admiration laissèrent rapidement place à une certaine inquiétude, surtout aux États-Unis, qui se sentaient dépassés par les avancées soviétiques. Cette tension croissante donna naissance à la course à l'espace, une compétition technologique et scientifique sans précédent.</strong>
+
+<br><br><h1><u>Chapitre 2 : Laïka, la Pionnière Involontaire</u></h1>
+
+<strong>À peine un mois après le lancement de Spoutnik 1, l'Union soviétique accomplissait un nouvel exploit. Le 3 novembre 1957, Spoutnik 2 fut lancé avec à son bord Laïka, une chienne errante trouvée dans les rues de Moscou. Laïka devint ainsi le premier être vivant à quitter notre planète. Son voyage fut un symbole de la détermination humaine à explorer l’inconnu, mais il souleva également des questions éthiques sur l’utilisation des animaux dans les expériences scientifiques. Malheureusement, Laïka ne survécut pas au voyage, mais son sacrifice marqua une étape importante dans la conquête de l'espace.</strong>
+
+<br><br><h1><u>Chapitre 3 : L’Amérique Réagit</u></h1>
+
+<strong>Face à ces succès soviétiques, les États-Unis durent réagir. Leur première réponse fut le lancement d'Explorer 1, le 31 janvier 1958. Ce satellite, beaucoup plus petit et léger que Spoutnik 1, embarquait néanmoins des instruments scientifiques de pointe. Il découvrit les ceintures de radiation de Van Allen, une découverte majeure qui contribua à notre compréhension de l'environnement spatial et des dangers qu’il représente pour les missions humaines.
+
+Le lancement d’Explorer 1 ne fut que le début. Les États-Unis mirent rapidement en place la NASA (National Aeronautics and Space Administration) en octobre 1958, centralisant ainsi leurs efforts spatiaux et scientifiques pour mieux rivaliser avec l’Union soviétique.</strong>
+
+<br><br><h1><u>Chapitre 4 : Youri Gagarine et le Premier Vol Habité</u></h1>
+
+<strong>Le 12 avril 1961, l'Union soviétique réalisa une prouesse qui fit le tour du monde : Youri Gagarine devint le premier homme à voyager dans l'espace. À bord de Vostok 1, Gagarine effectua une orbite complète autour de la Terre en 108 minutes. Son voyage fut marqué par des moments de gravité zéro, une vue spectaculaire de la Terre depuis l’espace, et une communication radio constante avec le sol. Son retour sain et sauf fut célébré comme un triomphe majeur pour l'Union soviétique et une démonstration éclatante de leur avance technologique.</strong>
+
+<br><br><h1><u>Chapitre 5 : Les États-Unis et le Programme Mercury</u></h1>
+
+<strong>Déterminés à ne pas se laisser distancer, les États-Unis intensifièrent leurs efforts avec le programme Mercury. Ce programme visait à envoyer un Américain dans l'espace et à démontrer la capacité des États-Unis à rivaliser avec les Soviétiques. Le 5 mai 1961, Alan Shepard devint le premier Américain à voler dans l’espace lors d’un vol suborbital à bord de Freedom 7. Puis, le 20 février 1962, John Glenn devint le premier Américain à orbiter autour de la Terre, accomplissant trois révolutions en près de cinq heures.
+
+Ces missions furent cruciales pour le moral et la réputation des États-Unis dans la course à l'espace. Elles démontrèrent la capacité des Américains à mener des missions spatiales complexes et à assurer la sécurité des astronautes.</strong>
+
+<br><br><h1><u>Chapitre 6 : Les Avancées Technologiques et les Premières Sorties Spatiales</u></h1>
+
+<strong>Les programmes spatiaux soviétiques et américains continuèrent de progresser, chacun cherchant à surpasser l'autre par des missions toujours plus ambitieuses. Les missions Voskhod de l'Union soviétique introduisirent des vols multi-personnels et la première sortie extravéhiculaire réalisée par Alexeï Leonov le 18 mars 1965. De son côté, le programme Gemini de la NASA permit de tester les techniques de rendez-vous et de docking en orbite, des compétences essentielles pour les futures missions lunaires.</strong>
+
+<br><br><h1><u>Chapitre 7 : Le Programme Apollo et la Conquête de la Lune</u></h1>
+
+<strong>Le couronnement des premiers exploits spatiaux fut sans doute le programme Apollo, lancé par la NASA avec pour objectif ultime de poser un homme sur la Lune et de le ramener sain et sauf sur Terre. Ce programme monumental mobilisa des ressources considérables et impliqua des milliers de scientifiques, d'ingénieurs et de techniciens.
+
+Après plusieurs missions préparatoires et des tests cruciaux, le 20 juillet 1969, l'objectif fut atteint. Apollo 11, avec à son bord Neil Armstrong, Buzz Aldrin et Michael Collins, atteignit la Lune. Armstrong et Aldrin descendirent sur la surface lunaire et passèrent plusieurs heures à explorer, à collecter des échantillons de roche et à effectuer des expériences scientifiques. Le moment où Neil Armstrong posa le pied sur la Lune et prononça les mots immortels "C'est un petit pas pour l'homme, un bond de géant pour l'humanité" fut retransmis en direct à des millions de téléspectateurs sur Terre, unifiant le monde dans un sentiment de fierté et d'émerveillement.</strong>
+
+<br><br><h1><u>Chapitre 8 : Les Leçons et l'Héritage des Premières Missions Spatiales</u></h1>
+
+<strong>Les premières missions spatiales ne furent pas seulement des démonstrations de puissance technologique; elles symbolisèrent l'aspiration humaine à explorer, à comprendre et à repousser les frontières du possible. Chaque mission apporta son lot de défis et de succès, de moments de triomphe et de pertes tragiques. La course à l’espace transforma notre vision du monde et de l'univers, et elle ouvrit la voie à des décennies de recherche et de découvertes scientifiques.
+
+Les avancées réalisées grâce à ces missions pionnières eurent des retombées considérables dans de nombreux domaines, de la technologie à la médecine, en passant par la communication et l'observation de la Terre. Elles inspirèrent également une nouvelle génération de scientifiques, d'ingénieurs et de rêveurs, motivés par la perspective d'explorer l'inconnu et de repousser les limites de notre compréhension.</strong>
+
+<br><br><h1><u>Conclusion</u></h1>
+
+<strong><em>En rétrospective, les premières missions spatiales furent des jalons extraordinaires dans l'histoire de l'humanité. Elles démontrèrent notre capacité à collaborer, à innover et à surmonter les défis les plus complexes. De Spoutnik à Apollo, chaque mission laissa une empreinte indélébile sur le chemin de l'exploration spatiale. Alors que nous regardons vers l'avenir avec des projets d'exploration de Mars et au-delà, nous nous souvenons de ces premiers pas dans l'espace comme du point de départ d'une aventure qui continue de définir et de redéfinir ce que signifie être humain.<em><strong></p>
+        </div>
+
+        
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeZ - Contactez-nous</title>
+    <link rel="stylesheet" href="styles700.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">𝘾𝙤𝙙𝙚𝙕</div>
+        <nav class="menu">
+            <a href="index70.html">Accueil</a>
+            <a href="contact4.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact">
+            <div class="contact-info">
+                <h1>Contactez-nous</h1>
+                <p>Nous sommes à votre écoute !</p>
+                <div class="contact-details">
+                    
+
+                        𝘾𝙤𝙙𝙚𝙕<br>
+                      📞:📵<br>
+                        
+                    </p>
+                    <p><strong>Informations pratiques</strong><br>
+                        MAIL:𝘾𝙤𝙙𝙚𝙕&11info@gmail.com
+                    </p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="post" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom*</label>
+                        <input type="text" id="name" name="name" required>
+                        <span id="name-error" class="error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required>
+                        <span id="email-error" class="error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone*</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Nom de la société</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <select id="subject" name="subject">
+                            <option value="info">Demande d'informations</option>
+                            <option value="support">Support</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message"></textarea>
+                        <span id="message-error" class="error"></span>
+                    </div>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 CodeZ. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const messageError = document.getElementById('message-error');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                if (validateName() && validateEmail() && validateMessage()) {
+                    form.submit();
+                }
+            });
+
+            function validateName() {
+                if (nameInput.value.trim() === '') {
+                    nameError.textContent = 'Le nom est requis.';
+                    return false;
+                } else {
+                    nameError.textContent = '';
+                    return true;
+                }
+            }
+
+            function validateEmail() {
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.textContent = 'Veuillez entrer une adresse email valide.';
+                    return false;
+                } else {
+                    emailError.textContent = '';
+                    return true;
+                }
+            }
+
+            function validateMessage() {
+                if (messageInput.value.trim() === '') {
+                    messageError.textContent = 'Le message est requis.';
+                    return false;
+                } else {
+                    messageError.textContent = '';
+                    return true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

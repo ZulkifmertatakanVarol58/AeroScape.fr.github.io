@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AéroScape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+		
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+
+        <div class="dropdown" id="menuDropdown">
+<a href="index.html">Couverture</a>
+<a href="index1.html">Accueil</a>
+            <a href="aéronautique.html">Aéronautique</a>
+            <a href="aérospatiale.html">Aérospatial</a>
+            <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+<a href="savoir.html">En Savoir Plus</a>
+<button onclick="toggleContrast()">Contraste Élevé</button>
+<script>
+    function toggleContrast() {
+        document.body.classList.toggle('high-contrast');
+    }
+</script>
+<style>
+    .high-contrast {
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+        </div>
+        <div class="subscribe-button" onclick="toggleForm()">ABONNEZ-VOUS</div>
+
+    </div>
+
+    <div class="subscribe-form-container" id="subscribeFormContainer">
+        <form class="subscribe-form" onsubmit="subscribe(event)">
+            <input type="email" placeholder="Entrez votre e-mail" required>
+            <input type="tel" placeholder="Entrez votre numéro de téléphone" required>
+            <button type="submit">S'abonner</button>
+        </form>
+    </div>
+  <div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <div class="content">
+  <style>
+        /* CSS for the ad bar */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .ad-bar {
+            width: 100%;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            border-top: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+            position: relative;
+            padding: 10px 0; /* Adjust padding to make it slimmer */
+        }
+        .ad-bar-inner {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+        .ad-item {
+            flex: none;
+            width: 150px; /* Reduced width for the ads */
+            margin: 0 10px;
+        }
+        .ad-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .ad-item img:hover {
+            transform: scale(1.05);
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-150px * 4)); } /* Adjust based on the number of ads */
+        }
+    </style>
+</head>
+<body>
+    <!-- Other content of your site -->
+
+    <!-- Ad bar -->
+    <div class="ad-bar">
+        <div class="ad-bar-inner">
+            <div class="ad-item">
+                <a href="https://example.com/ad1" target="_blank">
+                    <img src="terre.jpg" alt="Ad 1">
+                </a>
+            </div>
+            <div class="ad-item">
+                <a href="https://example.com/ad2" target="_blank">
+                    <img src="satellite.jpg" alt="Ad 2">
+                </a>
+            </div>
+            <div class="ad-item">
+                <a href="https://example.com/ad3" target="_blank">
+                    <img src="astronaute.jpg" alt="Ad 3">
+                </a>
+            </div>
+            <div class="ad-item">
+                <a href="https://example.com/ad4" target="_blank">
+                    <img src="rose.jpg" alt="Ad 4">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other content of your site -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const adBarInner = document.querySelector('.ad-bar-inner');
+            const adItems = Array.from(document.querySelectorAll('.ad-item'));
+            const adItemWidth = adItems[0].offsetWidth + 20; // including margin
+
+            let animationDuration = adItems.length * 5; // 5 seconds per ad
+            let currentScroll = 0;
+
+            // Clone ad items for continuous scrolling
+            adItems.forEach(item => {
+                const clone = item.cloneNode(true);
+                adBarInner.appendChild(clone);
+            });
+
+            // Update keyframes animation dynamically
+            adBarInner.style.animation = `scroll ${animationDuration}s linear infinite`;
+
+            // Pause animation on hover
+            adBarInner.addEventListener('mouseover', () => {
+                adBarInner.style.animationPlayState = 'paused';
+            });
+            adBarInner.addEventListener('mouseout', () => {
+                adBarInner.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+        <h1>Seeking Reality in the Future of Aeronautical Simulation</h1>
+        <p>The ability to simulate airflow over aircraft that look different from what we see today is a key challenge for aeronautical innovators.
+            <hr>
+            <br><strong>Crédit:NASA / Shishir Pandya</p></strong>
+        <a href="https://www.nasa.gov/aeronautics/seeking-reality-in-the-future-of-aeronautical-simulation/"><img src="https://www.nasa.gov/wp-content/uploads/2015/02/integrated_surfacecp_0.png" alt="Great Ape"></a>
+        <div class="article">
+            <hr>
+            <h2>Sur Mars, Perseverance fait des découvertes inédites au fond d’une ancienne rivière</h2>
+            <p>En explorant l'ancien canal fluvial de la Neretva Vallis le rover de la Nasa a découvert un nouveau type de roche:<hr><br><strong>Crédit: Science&vie</strong> </p>
+            <a href="https://www.science-et-vie.com/ciel-et-espace/sur-mars-perseverance-fait-des-decouvertes-inedites-au-fond-dune-ancienne-riviere-139807.html"><img src="https://www.science-et-vie.com/wp-content/uploads/scienceetvie/2024/06/thumbnail_bright-angel.jpg" alt="Great Ape"></a><hr>
+        </div>
+        <div class="article">
+            <h2>Un message alarmant de l’ISS diffusé accidentellement par la NASA sur YouTube</h2>
+            <p>Un message audio diffusé sur le flux YouTube de la Station spatiale internationale, jeudi 13 juin 2024, laisse penser qu’un accident de décompression est survenu dans l’espace. La NASA a pris le temps de rassurer les spectateurs inquiets car il s’agissait d’une erreur.<hr><br><strong>Crédit: Ouest-France</strong></p>
+            <a href="https://www.ouest-france.fr/sciences/espace/nasa/un-message-alarmant-de-liss-diffuse-accidentellement-par-la-nasa-sur-youtube-69e74482-2a59-11ef-94e8-820b9e9c1d0c"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/ISS_Aug2005.jpg" alt="Great Ape"></a><hr>
+        </div>
+
+        <div class="article">
+            <h2>La compagnie philippine Cebu Pacific signe une commande de 102 avions pour l’A321neo d’Airbus</h2>
+            <p>La compagnie aérienne philippine Cebu Pacific a signé auprès d’Airbus un protocole d’accord pour l’achat de 102 appareils A321neo. Une commande qui suit plusieurs annonces enregistrées ces derniers mois, et le lancement d’une nouvelle ligne d’assemblage à Toulouse.</p><hr><br><strong>Crédit: L'Usine Nouvelle</strong></p>
+            <a href="https://www.usinenouvelle.com/article/la-compagnie-philippine-cebu-pacific-signe-une-commande-de-102-avions-pour-l-a321neo-d-airbus.N2215393"><img src="321.jpg" alt="Great Ape"></a>
+        </div>
+<hr>
+        <div class="article">
+            <h2>Dans le désert, des étudiants vont expérimenter la vie sur Mars</h2>
+            <p>Six étudiants et un alumni de l’Isae-Supaero, vont partir dans une station qui recrée les conditions de vie sur Mars, dans le désert de l’Utah, aux États-Unis.</p><hr><br><strong>Crédit: LeFigaroEtudiant</strong></p>
+            <a href="https://etudiant.lefigaro.fr/article/dans-le-desert-des-etudiants-vont-experimenter-la-vie-sur-mars_2c823236-8b4b-11ed-a86d-66d30ea5ec0a/"><img src="marsa.jpg" alt="Great Ape"></a>
+<hr>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr>
+        <h2 class="footer-title">SUIVEZ-NOUS</h2>
+        <h5>© 2024-2025 AéroScape<img src="unnamed.jpg" style="max-width:8%;height:auto;"><br>Tous droits réservés.
+            <h5>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="twitter">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest">
+                    </a>
+                </div>
+                <div class="cookie-banner" id="cookieBanner">
+                    <hr>
+                    <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer <br>sur ce site, vous acceptez notre utilisation des cookies.
+                        <hr>
+                        
+                    </p>
+                </div>
+
+                <style>
+                    .cookie-banner {
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        background-color: rgba(0, 0, 0, 0.8);
+                        color: #fff;
+                        text-align: center;
+                        padding: 20px;
+                        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+                        z-index: 1000;
+                    }
+
+                    .cookie-banner button {
+                        background-color: #ffcc00;
+                        color: #000;
+                        border: none;
+                        padding: 10px 20px;
+                        margin-left: 20px;
+                        cursor: pointer;
+                        border-radius: 5px;
+                        font-weight: bold;
+                    }
+
+                    .cookie-banner button:hover {
+                        background-color: #e6b800;
+                    }
+                </style>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const dropdown = document.getElementById('menuDropdown');
+            menuIcon.classList.toggle('active');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleForm() {
+            const formContainer = document.getElementById('subscribeFormContainer');
+            formContainer.style.display = formContainer.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function subscribe(event) {
+            event.preventDefault();
+            alert('Merci pour votre abonnement !');
+            toggleForm();
+        }
+
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function acceptCookies() {
+            setCookie("cookieConsent", "true", 30);
+            var banner = document.getElementById("cookieBanner");
+            banner.parentNode.removeChild(banner); // Supprime l'élément du DOM une fois le cookie accepté
+        }
+
+        window.onload = function () {
+            if (!getCookie("cookieConsent")) {
+                document.getElementById("cookieBanner").style.display = "block";
+            }
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey || event.metaKey) { // metaKey pour MacOS
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+// Exemple d'intégration de Google Analytics
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

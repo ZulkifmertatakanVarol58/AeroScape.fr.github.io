@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Espace - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Aérospatial</h1>
+        <div class="article">
+            <h2>Les différents types de satellites</h2>
+<h5><u>Cette page contient: 13chapitres</u></h5>
+<hr>
+            <img src="typesat.jpg" alt="Les premières missions spatiales">
+            <p><br><br><h1><u>Chapitre 1 : Introduction aux Différents Types de Satellites</u></h1>
+
+<p><strong>Les satellites sont des objets en orbite autour de la Terre ou d'autres corps célestes. Ils sont classés en différents types en fonction de leurs fonctions et de leurs applications spécifiques.</strong></p>
+
+<br><br><h1><u>Chapitre 2 : Satellites de Communication</u></h1>
+
+<p><strong>Les satellites de communication sont utilisés pour transmettre des signaux de communication, tels que les communications téléphoniques, les données Internet, et les transmissions de télévision par satellite.</strong></p>
+
+<br><br><h1><u>Chapitre 3 : Satellites d'Observation de la Terre</u></h1>
+
+<p><strong>Les satellites d'observation de la Terre sont équipés de capteurs optiques ou radar pour surveiller et cartographier la surface de la Terre, fournissant des données pour l'agriculture, la surveillance environnementale, et la gestion des ressources naturelles.</strong></p>
+
+<br><br><h1><u>Chapitre 4 : Satellites Météorologiques</u></h1>
+
+<p><strong>Les satellites météorologiques recueillent des données sur les conditions atmosphériques de la Terre pour prévoir le temps, surveiller les tempêtes et les phénomènes météorologiques extrêmes, et étudier le climat à long terme.</strong></p>
+
+<br><br><h1><u>Chapitre 5 : Satellites de Navigation (GPS)</u></h1>
+
+<p><strong>Les satellites de navigation, comme ceux du système GPS, fournissent des informations de positionnement précises pour la navigation terrestre, maritime et aérienne, ainsi que pour des applications commerciales et militaires.</strong></p>
+
+<br><br><h1><u>Chapitre 6 : Satellites Scientifiques</u></h1>
+
+<p><strong>Les satellites scientifiques sont utilisés pour mener des recherches dans l'espace, étudier le Soleil, les planètes, les galaxies et les phénomènes astrophysiques, fournissant des données cruciales pour la recherche astronomique.</strong></p>
+
+<br><br><h1><u>Chapitre 7 : Satellites de Défense et de Sécurité</u></h1>
+
+<p><strong>Les satellites de défense et de sécurité sont utilisés pour la surveillance militaire, la reconnaissance, la communication sécurisée et la collecte de renseignements stratégiques.</strong></p>
+
+<br><br><h1><u>Chapitre 8 : Satellites d'Exploration Spatiale</u></h1>
+
+<p><strong>Les satellites d'exploration spatiale sont envoyés vers d'autres planètes, lunes ou astéroïdes pour étudier leur composition, leur atmosphère et leur géologie, contribuant à notre compréhension du système solaire.</strong></p>
+
+<br><br><h1><u>Chapitre 9 : Satellites de Télécommunications</u></h1>
+
+<p><strong>Les satellites de télécommunications sont dédiés à la transmission de signaux de télécommunications, facilitant les communications internationales, les connexions Internet et les réseaux de télévision par satellite.</strong></p>
+
+<br><br><h1><u>Chapitre 10 : Satellites d'Exploration et d'Observation Spatiale</u></h1>
+
+<p><strong>Les satellites d'exploration et d'observation spatiale sont utilisés pour explorer le système solaire et étudier les objets célestes au-delà de la Terre, fournissant des informations cruciales pour la recherche astronomique et astrophysique.</strong></p>
+
+<br><br><h1><u>Chapitre 11 : Satellites de Télévision</u></h1>
+
+<p><strong>Les satellites de télévision transmettent des signaux de télévision par satellite pour les services de diffusion directe aux foyers à travers le monde, offrant une couverture mondiale pour les chaînes de télévision et les fournisseurs de contenu.</strong></p>
+
+<br><br><h1><u>Chapitre 12 : Satellites de Reconnaissance</u></h1>
+
+<p><strong>Les satellites de reconnaissance sont utilisés pour la surveillance de la Terre à des fins militaires, civiles et scientifiques, capturant des images haute résolution et des données stratégiques pour l'analyse et la prise de décision.</strong></p>
+
+<br><br><h1><u>Chapitre 13 : Satellites de Surveillance et de Gestion des Catastrophes</u></h1>
+
+<p><strong>Les satellites de surveillance et de gestion des catastrophes fournissent des données en temps réel pour la prévention des catastrophes naturelles, la gestion des crises et les opérations de secours, facilitant une réponse rapide et efficace lors d'événements catastrophiques.</strong></p>
+
+<br><br><h1><u>Conclusion : L'Importance des Satellites dans notre Monde Moderne</u></h1>
+
+<p><strong>En conclusion, les différents types de satellites jouent un rôle crucial dans notre société moderne, en facilitant les communications mondiales, la surveillance environnementale, la navigation précise, les prévisions météorologiques, la recherche scientifique et bien plus encore. Leur utilisation diversifiée et leur évolution technologique continuent de façonner notre compréhension du monde et de l'univers.</strong></p></p>
+        </div>
+
+        
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>

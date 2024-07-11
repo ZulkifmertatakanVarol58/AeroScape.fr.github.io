@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planètes</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIG1.7HoCrsR7T7uQ4TQL41I3?w=270&h=270&c=6&r=0&o=5&pid=ImgGn" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0f1c;
+            color: #f0f0f0;
+        }
+        header {
+            background-color: #1f2a44;
+            color: #f0f0f0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu-item {
+            position: relative;
+        }
+        .menu-item a {
+            color: #f0f0f0;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .menu-item a:hover {
+            background-color: #304168;
+            border-radius: 5px;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #2a3759;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item:hover .submenu {
+            display: block;
+        }
+        .submenu-item a {
+            display: block;
+            padding: 10px 15px;
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+        .submenu-item a:hover {
+            background-color: #415a82;
+        }
+        .hero {
+            background-image: url('https://via.placeholder.com/1920x600'); /* Placeholder image, replace with relevant image */
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00aaff;
+            text-align: center;
+        }
+        .section-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        .section-content p {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #1f2a44;
+            color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CosmoVue</h1>
+    <div class="menu">
+        <div class="menu-item">
+            <a href="index58.html">Accueil</a>
+        </div>
+        <div class="menu-item">
+            Astrophysique
+            <div class="submenu">
+                <div class="submenu-item"><a href="astrophysique_intro.html">Introduction</a></div>
+                <div class="submenu-item"><a href="astrophysique_phenomenes.html">Phénomènes</a></div>
+                <div class="submenu-item"><a href="astrophysique_outils.html">Outils</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Planètes
+            <div class="submenu">
+                <div class="submenu-item"><a href="planetes_systeme_solaire.html">Système Solaire</a></div>
+               
+            </div>
+        </div>
+        <div class="menu-item">
+            Étoiles
+            <div class="submenu">
+                <div class="submenu-item"><a href="etoiles_types.html">Types d'Étoiles</a></div>
+                
+            </div>
+        </div>
+        <div class="menu-item">
+            Galaxies
+            <div class="submenu">
+                <div class="submenu-item"><a href="galaxies_types.html">Types de Galaxies</a></div>
+            
+            </div>
+        </div>
+        <div class="menu-item">
+            Trous Noirs
+            <div class="submenu">
+                <div class="submenu-item"><a href="trous_noirs_effets.html">Effets</a></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="hero">
+    <h2>Exploration des Planètes</h2>
+</div>
+<div class="container">
+    <div class="section-title">Le Système Solaire</div>
+    <div class="section-content">
+        <p>Le système solaire est composé du Soleil et de tous les objets célestes qui orbitent autour de lui. Voici quelques-unes des principales caractéristiques du système solaire :</p>
+        <ul>
+            <li><strong>Les Planètes :</strong> Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus et Neptune sont les huit planètes principales du système solaire, chacune avec ses propres caractéristiques uniques.</li>
+            <li><strong>Les Lunes :</strong> En plus des planètes, le système solaire compte des centaines de lunes qui orbitent autour des planètes géantes comme Jupiter et Saturne, ainsi que des lunes plus petites comme la Lune de la Terre.</li>
+            <li><strong>Les Astéroïdes et les Comètes :</strong> Ces petits corps rocheux et glacés orbitent autour du Soleil et peuvent parfois entrer en collision avec les planètes ou les lunes, ce qui entraîne des impacts et des cratères.</li>
+            <li><strong>La Ceinture d'Astéroïdes :</strong> Une région située entre les orbites de Mars et Jupiter où se trouvent des milliers d'astéroïdes de différentes tailles.</li>
+            <li><strong>La Ceinture de Kuiper :</strong> Une région au-delà de l'orbite de Neptune où se trouvent de nombreux objets glacés, y compris Pluton et d'autres planètes naines.</li>
+            <li><strong>La Nébuleuse Solaire :</strong> Une région de gaz et de poussière où de nouvelles étoiles et systèmes planétaires peuvent se former.</li>
+        </ul>
+        <p>L'étude du système solaire permet de mieux comprendre la formation et l'évolution des planètes, des lunes et des petits corps célestes, ainsi que leur importance pour la vie sur Terre.</p>
+    </div>
+</div><script>
+        // Empêcher l'affichage du menu contextuel avec le clic droit
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Bloquer les tentatives d'utilisation de certains raccourcis clavier
+        document.onkeydown = function (e) {
+            if (e.ctrlKey && (e.keyCode === 67 || // Ctrl+C
+                              e.keyCode === 85 || // Ctrl+U
+                              e.keyCode === 123)) { // F12
+                return false;
+            }
+        };
+
+        // Bloquer les tentatives d'utilisation de la combinaison de touches Ctrl+S
+        window.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.keyCode === 83) { // Ctrl+S
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+<footer>
+    <hr>
+    <p>&copy; 2024 CosmoVue . Tous droits réservés.</p>
+</footer>
+</body>
+</html>

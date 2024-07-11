@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Aéronautique - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Aéronautique</h1>
+        <div class="article">
+            <h2>Histoire de l'Aviation</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Wright_First_Flight_1903Dec17_%28full_restore_115%29.jpg" alt="Histoire de l'Aviation">
+            <p>L'aviation a commencé au début du 20ème siècle avec les premiers vols des frères Wright. Depuis, elle a évolué pour inclure des avions commerciaux, militaires et privés, transformant le transport mondial.</p>
+            <div class="links">
+                <a href="#">Les pionniers de l'aviation</a>
+                <a href="#">L'évolution des avions</a>
+                <a href="#">L'aviation moderne</a>
+            </div>
+        </div>
+        <div class="article">
+            <h2>Les Avions Commerciaux</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/011_Aircraft_of_various_airlines_together_at_Narita_Airport%2C_Japan._Swiss_Air_Lines%2C_United_Airlines%2C_Thai_Airways.JPG" alt="Avions Commerciaux">
+            <p>Les avions commerciaux transportent des passagers et des marchandises à travers le monde. Les modèles populaires incluent le Boeing 747, l'Airbus A380 et de nombreux autres qui assurent des vols quotidiens.</p>
+            <div class="links">
+                <a href="#">Types d'avions commerciaux</a>
+                <a href="#">Technologie des avions modernes</a>
+                <a href="#">Sécurité aérienne</a>
+            </div>
+        </div>
+        <div class="article">
+            <h2>L'Aviation Militaire</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/AirForce_over_Iraq.jpg" alt="Aviation Militaire">
+            <p>L'aviation militaire englobe les avions utilisés pour la défense et les opérations offensives. Cela inclut les chasseurs, les bombardiers, les hélicoptères et les drones, avec des technologies avancées pour la guerre moderne.</p>
+            <div class="links">
+                <a href="#">Les avions de chasse</a>
+                <a href="#">Les hélicoptères militaires</a>
+                <a href="#">Les drones militaires</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="subscribe-form-container" id="subscribeForm">
+        <h2>S'abonner à notre newsletter</h2>
+        <form class="subscribe-form">
+            <input type="email" placeholder="Votre email">
+            <button type="submit">S'abonner</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="footer-title">Suivez-nous</div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter"></a>
+            <a href="#" class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram"></a>
+        </div>
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner">
+       <hr> <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer sur ce site, vous acceptez notre utilisation des cookies.</p><hr>
+       
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>

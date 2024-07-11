@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmoVue</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIG1.7HoCrsR7T7uQ4TQL41I3?w=270&h=270&c=6&r=0&o=5&pid=ImgGn" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141d28;
+            color: #fff;
+        }
+        header {
+            background-color: #002147;
+            color: #fff;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #002147;
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .item {
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+            width: 300px;
+            background-color: #001f33;
+            cursor: pointer;
+        }
+        .item:hover {
+            transform: translateY(-10px);
+        }
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .item-content {
+            padding: 20px;
+        }
+        .item-content h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .item-content p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+        footer {
+            background-color: #002147;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .menu-item {
+            position: relative;
+            padding: 10px 20px;
+            background-color: #002147;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .menu-item:hover {
+            background-color: #003366;
+        }
+        .menu-item:hover .submenu {
+            display: block;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #003366;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .submenu-item {
+            padding: 10px 20px;
+            background-color: #003366;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .submenu-item:hover {
+            background-color: #004080;
+        }
+        .menu-item a, .submenu-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .v-snack__content {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .v-btn {
+            margin-left: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            color: #1e88e5;
+        }
+        .v-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CosmoVue</h1>
+    <hr>
+    <div class="menu">
+        <div class="menu-item">
+            <a href="index58.html">Accueil</a>
+			
+        </div>
+		 <div class="menu-item">
+            <a href="propo58.html">À propos</a>
+        </div>
+        <div class="menu-item">
+            Astrophysique
+            <div class="submenu">
+                <div class="submenu-item"><a href="astrophysique_intro.html">Introduction</a></div>
+                <div class="submenu-item"><a href="astrophysique_phenomenes.html">Phénomènes</a></div>
+                <div class="submenu-item"><a href="astrophysique_outils.html">Outils</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Planètes
+            <div class="submenu">
+                <div class="submenu-item"><a href="planetes_systeme_solaire.html">Système Solaire</a></div>
+                <div class="submenu-item"><a href="planetes_exoplanetes.html">Exoplanètes</a></div>
+                <div class="submenu-item"><a href="planetes_habitabilite.html">Habitabilité</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Étoiles
+            <div class="submenu">
+                <div class="submenu-item"><a href="etoiles_types.html">Types d'Étoiles</a></div>
+                <div class="submenu-item"><a href="etoiles_evolution.html">Évolution Stellaire</a></div>
+                <div class="submenu-item"><a href="etoiles_supernovas.html">Supernovas</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Galaxies
+            <div class="submenu">
+                <div class="submenu-item"><a href="galaxies_types.html">Types de Galaxies</a></div>
+                <div class="submenu-item"><a href="galaxies_formation.html">Formation</a></div>
+                <div class="submenu-item"><a href="galaxies_interactions.html">Interactions</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Trous Noirs
+            <div class="submenu">
+                <div class="submenu-item"><a href="trous_noirs_intro.html">Introduction</a></div>
+                <div class="submenu-item"><a href="trous_noirs_types.html">Types de Trous Noirs</a></div>
+                <div class="submenu-item"><a href="trous_noirs_effets.html">Effets</a></div>
+				        </div>
+    </div>
+</div>
+
+
+</header>
+<div class="container">
+    <div class="item">
+        <a href="nebuleuse.html">
+            <img src="https://s.rfi.fr/media/display/ec0f8efc-0214-11ed-9547-005056bfa79e/w:980/p:16x9/WEBB%20ANNEAU%20AUSTRAL.jpg" alt="Nébuleuse">
+            <div class="item-content">
+                <h2>Nébuleuse</h2>
+                <p>Une nébuleuse est une vaste étendue de gaz et de poussière dans l'espace. Elles sont souvent le lieu de formation des étoiles.</p>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="galaxie_ngc_4414.html">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/NGC_4414_%28NASA-med%29.jpg/370px-NGC_4414_%28NASA-med%29.jpg" alt="Galaxie NGC 4414">
+            <div class="item-content">
+                <h2>Galaxie NGC 4414</h2>
+                <p>La galaxie NGC 4414 est une galaxie spirale située à environ 62 millions d'années-lumière de la Terre dans la constellation de la Vierge.</p>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="trou_noir.html">
+            <img src="https://www.humanite.fr/wp-content/uploads/2024/01/P16-SCIENCES_MAR.jpg" alt="Trou Noir">
+            <div class="item-content">
+                <h2>Trou Noir</h2>
+                <p>Un trou noir est une région de l'espace où la gravité est si intense que rien, pas même la lumière, ne peut s'échapper.</p>
+            </div>
+        </a>
+    </div>
+</div>
+<footer>
+    <hr>
+    <p>&copy; 2024 CosmoVue. Tous droits réservés.</p>
+</footer>
+<div role="status" aria-live="polite" class="v-snack__content" id="cookie-notification" style="display: none;">
+    <p>This site uses cookies. By continuing to browse the site you are agreeing to our use of cookies. Check our <a href="police.html">Privacy Policy</a>.</p>
+    <button type="button" class="blue--text darken-1 v-btn v-btn--text theme--dark v-size--default" id="agree-button"><span class="v-btn__content">I Agree</span></button>
+</div>
+
+<script>
+    // Fonction pour cacher la notification des cookies
+    function hideCookieNotification() {
+        var cookieNotification = document.getElementById('cookie-notification');
+        cookieNotification.style.display = 'none';
+        // Stocker l'état de la notification dans un cookie
+        document.cookie = 'cookieNotificationShown=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+    }
+
+    // Ajouter un gestionnaire d'événements au bouton "I Agree" pour cacher la notification
+    var agreeButton = document.getElementById('agree-button');
+    agreeButton.addEventListener('click', hideCookieNotification);
+
+    // Vérifier si la notification des cookies doit être affichée lors du chargement de la page
+    window.addEventListener('load', function() {
+        if (!document.cookie.includes('cookieNotificationShown=true')) {
+            var cookieNotification = document.getElementById('cookie-notification');
+            cookieNotification.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>
+```

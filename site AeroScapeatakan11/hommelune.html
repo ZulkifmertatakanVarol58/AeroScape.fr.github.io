@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Espace - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Espace</h1>
+        <div class="article">
+            <h2>L'homme sur la Lune</h2>
+<h5><u>Cette page contient: 12 chapitres</u></h5>
+<hr>
+            <img src="lunehomme.jpg" alt="Les premières missions spatiales">
+            <p><h1><u>Chapitre 1 : L'Origine du Rêve Lunaire</u></h1>
+
+<strong>Depuis des millénaires, la Lune a fasciné l'humanité. Les anciens peuples la considéraient comme une divinité ou un guide nocturne, ses phases régulant le temps et les saisons. Avec l'avènement de la science moderne, la Lune devint un objet d'étude, révélant peu à peu ses mystères. Mais c'est au XXe siècle que l'idée de marcher sur la Lune passa du rêve à une possibilité concrète, alimentée par les avancées technologiques et la rivalité géopolitique de la Guerre froide.</strong>
+
+<br><br><h1><u>Chapitre 2 : La Course à l'Espace</u></h1>
+
+<strong>La compétition pour la suprématie spatiale entre les États-Unis et l'Union soviétique atteignit son paroxysme avec le lancement de Spoutnik 1 en 1957 par les Soviétiques. En réponse, les États-Unis accélérèrent leurs propres efforts, menant au lancement d'Explorer 1 en 1958 et à la création de la NASA la même année. Chaque succès soviétique, comme le vol de Youri Gagarine en 1961, incita les Américains à redoubler d'efforts pour ne pas se laisser distancer.</strong>
+
+<br><br><h1><u>Chapitre 3 : L'Appel à la Nation</u></h1>
+
+<strong>Le 25 mai 1961, le président John F. Kennedy prononça un discours devant le Congrès américain, appelant la nation à poser un homme sur la Lune et à le ramener sain et sauf sur Terre avant la fin de la décennie. Cet appel audacieux galvanisa la nation et marqua le début du programme Apollo, une entreprise ambitieuse qui mobilisa des ressources humaines et financières sans précédent.</strong>
+
+<br><br><h1></u>Chapitre 4 : Les Préparatifs du Programme Apollo</u></h1>
+
+<strong>La NASA entreprit une série de missions préparatoires cruciales pour assurer le succès du programme Apollo. Les missions Mercury et Gemini permirent de tester les techniques de rendez-vous spatial, de sortie extravéhiculaire et de longue durée dans l'espace. Parallèlement, des équipes d'ingénieurs et de scientifiques travaillaient d'arrache-pied pour développer les technologies nécessaires, notamment le module de commande et de service, le module lunaire et la fusée Saturn V.</strong>
+
+<br><br><h1></u>Chapitre 5 : Les Premières Missions Apollo</u></h1>
+
+<strong>Le programme Apollo démarra véritablement avec Apollo 1, mais cette mission fut tragiquement marquée par un incendie au sol qui coûta la vie aux trois astronautes à bord. Cet événement entraîna une refonte complète des procédures de sécurité. Les missions Apollo 7, 8, 9 et 10 suivirent, chacune apportant des connaissances essentielles et testant des composants critiques pour le vol lunaire.</strong>
+
+<br><br><h1></u>Chapitre 6 : Apollo 11 : Le Grand Saut</u></h1>
+
+<strong>Le 16 juillet 1969, Apollo 11 décolla du Centre spatial Kennedy en Floride. À bord, Neil Armstrong, Buzz Aldrin et Michael Collins entamèrent un voyage historique vers la Lune. Après un voyage de trois jours, Apollo 11 entra en orbite lunaire. Armstrong et Aldrin descendirent à bord du module lunaire "Eagle", tandis que Collins resta en orbite dans le module de commande "Columbia".</strong>
+
+<br><br><h1></u>Chapitre 7 : Les Premiers Pas sur la Lune</u></h1>
+
+<strong>Le 20 juillet 1969, à 20h17 UTC, le module lunaire "Eagle" se posa sur la Mer de la Tranquillité. Quelques heures plus tard, Neil Armstrong descendit l'échelle et posa le pied sur la Lune, prononçant la célèbre phrase : "C'est un petit pas pour l'homme, un bond de géant pour l'humanité." Buzz Aldrin le rejoignit peu après, et ensemble, ils plantèrent le drapeau américain, collectèrent des échantillons de roche et menèrent des expériences scientifiques.</strong>
+
+<br><br><h1></u>Chapitre 8 : Le Retour Triomphal</u></h1>
+
+<strong>Après 21 heures et 36 minutes sur la surface lunaire, Armstrong et Aldrin remontèrent à bord du module lunaire, rejoignant Collins dans le module de commande. Le 24 juillet 1969, Apollo 11 amerrit dans l'océan Pacifique, marquant la fin d'une mission couronnée de succès et le début d'une nouvelle ère pour l'exploration spatiale.</strong>
+
+<br><br><h1></u>Chapitre 9 : Les Réactions Mondiales</u></h1>
+
+<strong>L'atterrissage sur la Lune fut suivi avec une attention fiévreuse par des millions de personnes à travers le monde. Les images diffusées en direct capturèrent l'imagination de tous, unissant temporairement l'humanité dans un moment de fierté et de triomphe partagés. Les dirigeants mondiaux félicitèrent les États-Unis pour cet exploit monumental, et les astronautes furent célébrés en héros à leur retour sur Terre.</strong>
+
+<br><br><h1></u>Chapitre 10 : Les Missions Apollo Suivantes</u></h1>
+
+<strong>Le programme Apollo ne s'arrêta pas à Apollo 11. Entre 1969 et 1972, cinq autres missions habitées atteignirent la Lune. Chaque mission apporta de nouvelles découvertes scientifiques et repoussa les limites de l'exploration humaine. Les astronautes parcoururent de plus grandes distances, conduisant le rover lunaire et déployant des instruments scientifiques sophistiqués.</strong>
+
+<br><br><h1></u>Chapitre 11 : L'Héritage du Programme Apollo</u></h1>
+
+<strong>Le programme Apollo laissa un héritage durable non seulement en termes de connaissances scientifiques mais aussi en inspirant des générations de scientifiques, d'ingénieurs et d'explorateurs. Les technologies développées pour les missions Apollo trouvèrent des applications dans divers domaines, de la médecine aux matériaux, en passant par l'informatique. Apollo démontra également la capacité de l'humanité à surmonter des défis monumentaux grâce à l'innovation, la collaboration et la détermination.</strong>
+
+<br><br><h1></u>Chapitre 12 : Le Futur de l'Exploration Spatiale</u></h1>
+
+<strong>L'héritage d'Apollo se poursuit alors que l'humanité regarde vers de nouvelles frontières. Les missions vers Mars, les projets de bases lunaires permanentes et les explorations des astéroïdes sont autant de défis inspirés par les premiers pas sur la Lune. La coopération internationale et les avancées technologiques ouvrent la voie à une nouvelle ère d'exploration où l'espace devient une partie intégrante du futur de l'humanité.</strong>
+
+<br><br><h1><u>Conclusion</u></h1>
+
+<strong><em>Le programme Apollo reste un témoignage de ce que l'humanité peut accomplir lorsqu'elle est unie par un objectif commun. Les premiers pas sur la Lune sont gravés dans l'histoire comme l'un des plus grands exploits de l'ingéniosité humaine. En revisitant cette épopée, nous nous rappelons de la puissance de nos rêves et de notre capacité à réaliser l'impossible. Alors que nous continuons à explorer et à découvrir, l'esprit d'Apollo continue de nous inspirer à atteindre les étoiles.i</em></strong></p>
+        </div>
+
+        
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="sles.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.radio-group {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-left: 10px;
+}
+
+.button-group {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: green;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Veuillez choisir une option :</h2>
+        <form id="validationForm">
+            <div class="radio-group">
+                <input type="radio" id="readAndValidate" name="validation" value="readAndValidate">
+                <label for="readAndValidate">✅ J'ai lu et je valide</label>
+            </div>
+            <div class="radio-group">
+                <input type="radio" id="notRead" name="validation" value="notRead">
+                <label for="notRead">❌ Je n'ai pas lu, donc je ne valide pas, je quitte le site</label>
+            </div>
+            <div class="button-group">
+                <button type="submit">Soumettre</button>
+            </div>
+        </form>
+        <div id="message"></div>
+    </div>
+<script>
+document.getElementById('validationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const selectedOption = document.querySelector('input[name="validation"]:checked');
+
+    if (selectedOption) {
+        if (selectedOption.value === 'readAndValidate') {
+            document.getElementById('message').textContent = "Merci, bienvenue chez Aeroscape !";
+        } else if (selectedOption.value === 'notRead') {
+            alert("Vous allez quitter le site.");
+            window.close();  // This line may not work in some browsers due to security restrictions
+            window.location.href = 'https://www.example.com';  // Replace with the URL you want to redirect to
+        }
+    } else {
+        alert("Veuillez choisir une option.");
+    }
+});
+</script>
+</body>
+</html>

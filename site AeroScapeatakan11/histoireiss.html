@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Espace - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Espace</h1>
+        <div class="article">
+            <h2>Histoire de l'ISS</h2>
+<h5><u>Cette page contient: 10 chapitres</u></h5>
+<hr>
+            <img src="astronaute1.jpg" alt="Les premières missions spatiales">
+            <p><br><br><h1><u>Chapitre 1 : Les Premières Étapes</u></h1>
+
+<strong>L'idée d'une station spatiale internationale remonte à plusieurs décennies avant sa réalisation. Les premières concepts et discussions sur une station spatiale orbitale internationale ont eu lieu pendant la Guerre froide, mais la rivalité entre les États-Unis et l'Union soviétique a retardé toute collaboration. Cependant, avec la fin de la Guerre froide et l'effondrement de l'Union soviétique en 1991, une nouvelle ère de coopération internationale s'est ouverte, menant à la création de la Station spatiale internationale (ISS).</strong>
+
+<br><br><h1><u>Chapitre 2 : La Naissance du Projet</u></h1>
+
+<strong>Le projet de l'ISS a été officiellement lancé en 1993 lorsque la NASA et l'agence spatiale russe, Roscosmos, ont signé un accord de coopération. Peu de temps après, d'autres agences spatiales internationales, notamment l'Agence spatiale européenne (ESA), l'Agence spatiale japonaise (JAXA), et l'Agence spatiale canadienne (ASC), ont rejoint le projet. Cette collaboration mondiale a permis de partager les coûts et les ressources, et de bénéficier des expertises et des technologies de chaque pays participant.</strong>
+
+<br><br><h1><u>Chapitre 3 : Les Premiers Modules</u></h1>
+
+<strong>Le 20 novembre 1998, le premier module de l'ISS, Zarya, a été lancé par une fusée russe Proton. Ce module de contrôle fonctionnel a été suivi en décembre 1998 par le module Unity, lancé par la NASA à bord de la navette spatiale Endeavour. L'assemblage de l'ISS a ainsi commencé en orbite terrestre basse, avec des astronautes et des cosmonautes travaillant ensemble pour connecter et configurer les modules.</strong>
+
+<br><br><h1><u>Chapitre 4 : Expansion et Développement</u></h1>
+
+<strong>Au cours des années suivantes, de nombreux modules supplémentaires ont été ajoutés à l'ISS. Parmi eux, le module de laboratoire Destiny de la NASA, le laboratoire européen Columbus, et le module japonais Kibo. Ces laboratoires ont permis de mener des expériences scientifiques avancées dans des conditions de microgravité. En plus des laboratoires, des modules d'habitation, des panneaux solaires et des systèmes de support de vie ont été installés pour assurer la vie à bord et les opérations de recherche.</strong>
+
+<br><br><h1><u>Chapitre 5 : La Vie à Bord</u></h1>
+
+<strong>La vie à bord de l'ISS est unique et exigeante. Les astronautes vivent et travaillent en apesanteur, ce qui nécessite une adaptation physique et mentale. Les journées sont rythmées par les expériences scientifiques, la maintenance de la station, les exercices physiques pour compenser les effets de l'apesanteur sur le corps humain, et des moments de détente. Les communications régulières avec la Terre et les vues spectaculaires de notre planète depuis l'orbite offrent également des expériences inoubliables aux résidents de l'ISS.</strong>
+
+<br><br><h1><u>Chapitre 6 : Les Avancées Scientifiques</u></h1>
+
+<strong>L'ISS est un laboratoire unique pour la recherche scientifique. Les expériences menées dans des conditions de microgravité ont permis des avancées dans de nombreux domaines, y compris la biologie, la physique, la science des matériaux et la médecine. Les recherches sur la croissance des cristaux de protéines, par exemple, ont aidé à développer de nouveaux médicaments. Les études sur les effets de l'apesanteur sur le corps humain ont fourni des informations cruciales pour les futures missions spatiales de longue durée.</strong>
+
+<br><br><h1><u>Chapitre 7 : Les Missions Internationales</u></h1>
+
+<strong>La coopération internationale est au cœur de l'ISS. Les équipages de l'ISS sont composés d'astronautes de différentes nationalités, travaillant ensemble dans un esprit de collaboration. Des missions conjointes entre la NASA, Roscosmos, l'ESA, JAXA et l'ASC ont permis de renforcer les liens entre les pays participants et de partager les bénéfices de la recherche spatiale. L'ISS est un exemple remarquable de ce que l'humanité peut accomplir lorsqu'elle travaille ensemble au-delà des frontières nationales.</strong>
+
+<br><br><h1><u>Chapitre 8 : Les Défis Techniques et Humains</u></h1>
+
+<strong>L'exploitation de l'ISS n'a pas été sans défis. Les pannes techniques, les besoins de maintenance régulière et les risques liés aux débris spatiaux sont des problèmes constants. De plus, la gestion des ressources limitées comme l'eau et l'air, ainsi que la protection contre les radiations cosmiques, nécessitent des solutions innovantes. Sur le plan humain, vivre en isolement et en confinement pendant de longues périodes peut être difficile, mais les équipages reçoivent un soutien psychologique et médical pour les aider à faire face.</strong>
+
+<br><br><h1><u>Chapitre 9 : Les Partenariats Commerciaux</u></h1>
+
+<strong>Au cours des dernières années, les partenariats commerciaux ont pris une importance croissante dans l'exploitation de l'ISS. Des entreprises privées, telles que SpaceX et Boeing, ont développé des vaisseaux spatiaux pour transporter des astronautes et des cargaisons vers l'ISS. Ces partenariats ont permis de réduire les coûts et d'ouvrir l'accès à l'espace à de nouvelles entreprises et organisations, stimulant ainsi l'innovation et l'économie spatiale.</strong>
+
+<br><br><h1><u>Chapitre 10 : L'Héritage et l'Avenir de l'ISS</u></h1>
+
+<strong>Depuis plus de deux décennies, l'ISS a servi de plateforme pour l'exploration scientifique, la coopération internationale et l'innovation technologique. Son héritage est immense, mais la station approche de la fin de sa durée de vie prévue. Les discussions sur l'avenir de l'ISS incluent des plans pour des stations spatiales commerciales et des missions vers la Lune et Mars. Quel que soit l'avenir, l'ISS restera un symbole de ce que l'humanité peut accomplir ensemble dans l'exploration de l'espace.</strong>
+
+<br><br><h1><u>Conclusion : Un Pont Vers le Futur</u></h1>
+
+<strong>L'histoire de l'ISS est une histoire de collaboration, d'innovation et de persévérance. Elle a démontré que l'exploration spatiale peut transcender les frontières et les différences, unissant les nations dans la quête de connaissances et de progrès. Alors que nous nous tournons vers de nouvelles aventures au-delà de l'orbite terrestre basse, l'ISS reste un pont vers le futur, inspirant les générations à venir à poursuivre l'exploration de l'univers.</strong></p>
+        </div>
+
+        
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>
+

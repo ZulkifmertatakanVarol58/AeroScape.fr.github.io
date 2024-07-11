@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Espace - Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 5px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 3px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .menu-icon.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 8px 16px; /* Taille réduite du bouton */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 14px; /* Taille de la police réduite */
+        }
+
+        .subscribe-button:hover {
+            background-color: #e6b800;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .article {
+            margin-bottom: 40px;
+        }
+
+        .subscribe-form-container {
+            display: none;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subscribe-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            padding: 12px 24px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #e6b800;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(0%) sepia(100%) saturate(10000%) hue-rotate(358deg) brightness(94%) contrast(102%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="subscribe-button" onclick="toggleSubscribeForm()"><a href="index1.html">S'abonner</a></div>
+    </div>
+
+    <div class="dropdown" id="menuDropdown">
+        <a href="index1.html">Accueil</a>
+        <a href="aéronautique.html">Aéronautique</a>
+        <a href="aérospatiale.html">Aérospatial</a>
+        <a href="espace.html">Espace</a>
+<a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        <button onclick="toggleContrast()">Contraste Élevé</button>
+    </div>
+<div id="google_translate_element"></div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'en,fr,es,de,it,pt,ru,zh-CN,ja,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div class="content">
+        <h1>Section Espace</h1>
+        <div class="article">
+            <h2> Recherches scientifiques à bord</h2>
+<h5><u>Cette page contient: 11chapitres</u></h5>
+<hr>
+            <img src="astronaute1.jpg" alt="Les premières missions spatiales">
+            <p><br><br><h1><u>Chapitre 1 : Introduction à la Recherche Scientifique</u></h1>
+
+<strong>La Station spatiale internationale (ISS) est bien plus qu'un simple habitat en orbite. C'est un laboratoire scientifique unique où des recherches avancées sont menées dans des conditions de microgravité. Ces recherches ont des implications importantes pour la science, la technologie et la santé humaine, à la fois dans l'espace et sur Terre. Depuis le lancement de l'ISS, des centaines d'expériences ont été réalisées, couvrant un large éventail de disciplines scientifiques.</strong>
+
+<br><br><h1><u>Chapitre 2 : Les Avancées en Biologie</u></h1>
+
+<strong>La microgravité offre des opportunités uniques pour étudier les processus biologiques de manière différente que sur Terre. Les scientifiques ont étudié la croissance des cellules, les effets de l'apesanteur sur les systèmes biologiques et le comportement des micro-organismes. Ces recherches ont conduit à des découvertes importantes, comme l'amélioration de la compréhension du vieillissement cellulaire et le développement de nouvelles méthodes pour traiter les maladies.</strong>
+
+<br><br><h1><u>Chapitre 3 : La Science des Matériaux</u></h1>
+
+<strong>Les matériaux se comportent différemment en microgravité, offrant aux scientifiques des moyens nouveaux pour étudier leurs propriétés et les améliorer. Les recherches sur les alliages métalliques, les cristaux et les fluides ont permis de développer des matériaux plus résistants et plus légers. Ces avancées ont des applications potentielles dans divers domaines, allant de l'aérospatiale à l'électronique, en passant par la médecine.</strong>
+
+<br><br><h1><u>Chapitre 4 : Les Études sur la Physiologie Humaine</u></h1>
+
+<strong>Comprendre comment le corps humain réagit à la microgravité est crucial pour les futures missions spatiales de longue durée. Les astronautes à bord de l'ISS participent à des études qui examinent les effets de l'apesanteur sur les muscles, les os, le système cardiovasculaire et le système immunitaire. Ces recherches ont révélé des informations vitales pour contrer les effets négatifs de l'apesanteur et maintenir la santé des astronautes pendant les missions prolongées.</strong>
+
+<br><br><h1><u>Chapitre 5 : Les Expériences en Physique Fondamentale</u></h1>
+
+<strong>La microgravité permet d'explorer des aspects de la physique fondamentale qui sont difficiles, voire impossibles, à observer sur Terre. Les chercheurs ont étudié la physique des fluides, la combustion, et les phénomènes thermiques. Ces expériences aident à améliorer notre compréhension des lois physiques et peuvent conduire à des innovations technologiques et industrielles.</strong>
+
+<br><br><h1><u>Chapitre 6 : La Médecine Spatiale</u></h1>
+
+<strong>Les recherches médicales à bord de l'ISS visent à développer des traitements pour les conditions de santé qui affectent les astronautes et les personnes sur Terre. Des études sur les effets de l'apesanteur sur la distribution des médicaments, les changements hormonaux et les rythmes circadiens ont été menées. Les résultats de ces recherches peuvent améliorer les traitements médicaux pour une variété de maladies, y compris l'ostéoporose et les maladies cardiovasculaires.</strong>
+
+<br><br><h1><u>Chapitre 7 : Les Expériences Agricoles</u></h1>
+
+<strong>La culture de plantes en microgravité est essentielle pour les futures missions de longue durée, comme les voyages vers Mars. Les scientifiques ont étudié la croissance des plantes, la germination des graines, et les cycles de reproduction en apesanteur. Ces expériences fournissent des informations cruciales pour la production de nourriture dans l'espace et peuvent également améliorer les techniques agricoles sur Terre.</strong>
+
+<br><br><h1><u>Chapitre 8 : Les Études de la Terre et de l'Espace</u></h1>
+
+<strong>L'ISS offre une plateforme unique pour observer la Terre et l'espace. Les instruments à bord permettent de surveiller les changements climatiques, les catastrophes naturelles, et d'étudier l'atmosphère terrestre. De plus, l'ISS sert de base pour des observations astronomiques, aidant les scientifiques à étudier les phénomènes spatiaux tels que les rayons cosmiques et les tempêtes solaires.</strong>
+
+<br><br><h1><u>Chapitre 9 : La Collaboration Internationale</u></h1>
+
+<strong>La recherche à bord de l'ISS est le fruit d'une collaboration internationale, impliquant des scientifiques du monde entier. Cette coopération permet de partager les coûts et les bénéfices des recherches, et de rassembler les meilleures idées et technologies. Les expériences internationales contribuent à une compréhension globale et à des avancées scientifiques qui bénéficient à toute l'humanité.</strong>
+
+<br><br><h1><u>Chapitre 10 : Les Innovations Technologiques</u></h1>
+
+<strong>Les défis uniques de la vie et du travail à bord de l'ISS ont conduit à de nombreuses innovations technologiques. Les systèmes de support de vie, les technologies de recyclage de l'eau et de l'air, et les outils de maintenance en apesanteur sont quelques exemples. Ces innovations ont souvent des applications terrestres, améliorant la technologie et la qualité de vie sur Terre.</strong>
+
+<br><br><h1><u>Chapitre 11 : Les Projets Futurs</u></h1>
+
+<strong>La recherche scientifique à bord de l'ISS est en constante évolution, avec de nouveaux projets et expériences planifiés pour l'avenir. Des recherches sur les technologies de survie pour les missions vers Mars, les études sur l'impression 3D en microgravité, et les expériences de biologie synthétique sont en cours de développement. Ces projets promettent de repousser les limites de notre connaissance et de préparer l'humanité pour les futures explorations spatiales.</strong>
+
+<br><br><h1><u>Conclusion : Un Laboratoire pour l'Humanité</u></h1>
+
+<strong>La Station spatiale internationale représente un laboratoire extraordinaire où la science, la coopération internationale et l'innovation se rencontrent. Les recherches menées à bord de l'ISS ont déjà eu un impact profond sur notre compréhension de la science et de la technologie, et elles continueront de le faire. En regardant vers l'avenir, l'ISS reste un symbole puissant de ce que l'humanité peut accomplir lorsqu'elle travaille ensemble pour explorer l'inconnu.</strong></p>
+        </div>
+
+        
+    <script>
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            var menuIcon = document.querySelector('.menu-icon');
+            menuIcon.classList.toggle('active');
+        }
+
+        function toggleSubscribeForm() {
+            var subscribeForm = document.getElementById('subscribeForm');
+            subscribeForm.style.display = subscribeForm.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function acceptCookies() {
+            var cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éducation Spatiale - AeroScape</title>
+    <link rel="stylesheet" href="styles5.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">AeroScape</div>
+        <div class="menu-icon" onclick="toggleDropdown()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown" id="menuDropdown">
+            <a href="index1.html">Accueil</a>
+            <a href="aeronautique.html">Aéronautique</a>
+            <a href="aerospatiale.html">Aérospatial</a>
+            <a href="espace.html">Espace</a>
+            <a href="galerie.html">Picture Galerie AeroScape</a>
+            <a href="discussion.html">Community Discussion</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Éducation Spatiale</h2>
+        <div class="education-resource">
+            <h3>Quiz sur l'Astronomie</h3>
+            <p>Testez vos connaissances sur les planètes, les étoiles et les galaxies...</p>
+            <a href="quiz.html" class="btn">Commencer le Quiz</a>
+        </div>
+        <div class="education-resource">
+            <h3>Activités pour Enfants</h3>
+            <p>Des activités ludiques pour inspirer les jeunes esprits à explorer l'espace...</p>
+            <a href="activities.html" class="btn">Découvrir les Activités</a>
+        </div>
+        <!-- Ajoute d'autres ressources éducatives ici -->
+    </div>
+
+    <script src="script.js"></script>
+<script>
+// Fonction pour basculer l'affichage du menu déroulant
+function toggleDropdown() {
+    var dropdownMenu = document.getElementById("menuDropdown");
+    if (dropdownMenu.style.display === "block") {
+        dropdownMenu.style.display = "none";
+    } else {
+        dropdownMenu.style.display = "block";
+    }
+}
+
+// Écouteur d'événement pour fermer le menu déroulant si l'utilisateur clique en dehors
+document.addEventListener("click", function(event) {
+    var dropdownMenu = document.getElementById("menuDropdown");
+    var menuIcon = document.querySelector(".menu-icon");
+    if (event.target !== menuIcon && !menuIcon.contains(event.target) && event.target !== dropdownMenu && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+    }
+});
+</script>
+</body>
+</html>

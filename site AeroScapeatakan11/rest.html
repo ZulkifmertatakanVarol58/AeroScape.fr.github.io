@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restrictions - AeroScape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Fond noir */
+            color: #fff; /* Texte blanc */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000; /* Fond noir pour l'en-tête */
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 4px;
+            background-color: #fff; /* Barres du menu en blanc */
+            margin: 4px 0;
+            transition: background-color 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00; /* Au survol, changer la couleur en jaune */
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background-color: #000; /* Fond noir pour le dropdown */
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555; /* Au survol, changer la couleur de fond en gris plus foncé */
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: black; /* Fond gris foncé pour la section de contenu */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ffcc00; /* Titre en jaune */
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #ccc; /* Texte gris clair */
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #007BFF; /* Bouton bleu */
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: black; /* Au survol, bleu légèrement plus foncé */
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #000; /* Fond noir pour le pied de page */
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(100%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(70%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00; /* Bouton jaune */
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800; /* Au survol, jaune légèrement plus foncé */
+        }
+
+        .souligne {
+            text-decoration: underline;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">AeroScape</div>
+        <div class="menu-icon" onclick="toggleDropdown()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="menuDropdown" class="dropdown">
+            <a href="index1.html">Accueil</a>
+            <a href="savoir.html">En Savoir Plus</a>
+            <a href="contact.html">Nous Contacter</a>
+        </div>
+    </header>
+    <div class="content">
+        <h1>Restrictions d'Utilisation</h1>
+        <p>Bienvenue sur la Restrictions d'Utilisation d'AéroScape ! Pour garantir une expérience agréable et respectueuse pour tous, nous vous demandons de respecter les restrictions suivantes lors de votre visite sur notre site :</p>
+        
+        <p class="souligne">Droits d'Auteur et Propriété Intellectuelle :</p>
+        <p>Tout le contenu de ce site est protégé par des droits d'auteur. Vous n'êtes pas autorisé à copier, reproduire, distribuer ou transmettre nos articles, images ou autres contenus sans notre autorisation écrite préalable.</p>
+        
+        <p class="souligne">Utilisation du Contenu :</p>
+        <p>Le contenu d'AeroScape est réservé à un usage personnel et non commercial. Vous pouvez lire et partager des liens vers nos articles, mais vous ne pouvez pas télécharger ou redistribuer le contenu sur d'autres sites ou plateformes sans notre permission.</p>
+        
+        <p class="souligne">Partage et Liens :</p>
+        <p>Vous pouvez partager des liens vers notre site sur vos réseaux sociaux et blogs, à condition de nous attribuer correctement. Toutefois, il est interdit de copier et coller des articles entiers ou de grandes portions de texte sur d'autres sites sans notre autorisation.</p>
+        
+        <p class="souligne">Revendications de Contenu :</p>
+        <p>Si vous pensez que votre travail a été utilisé sur notre site sans votre permission, veuillez nous contacter via notre formulaire de revendication pour que nous puissions examiner la situation et prendre les mesures appropriées.</p>
+        
+        <p class="souligne">Conditions d'Utilisation :</p>
+        <p>En utilisant notre site, vous acceptez nos conditions d'utilisation, qui interdisent notamment l'utilisation de scripts automatisés pour récupérer des données (scraping) et l'utilisation de notre contenu pour la formation de modèles d'intelligence artificielle sans autorisation.</p>
+        
+        <p class="souligne">Protection du Contenu :</p>
+        <p>Pour protéger notre contenu, nous avons mis en place des mesures techniques comme le blocage du clic droit et la désactivation du copier-coller. Nous vous demandons de respecter ces mesures.</p>
+        <p>Il est strictement interdit d'inspecter le code source de notre site, d'accéder aux éléments techniques ou d'utiliser notre code pour quelque fin que ce soit sans notre autorisation écrite préalable.</p>
+        
+        <p class="souligne">Licences et Utilisation Commerciale :</p>
+        <p>Si vous souhaitez utiliser notre contenu à des fins commerciales, veuillez nous contacter pour discuter des options de licence. Toute utilisation commerciale sans une licence appropriée est strictement interdite.</p>
+        
+        <p class="souligne">Surveillance et Application :</p>
+        <p>Nous surveillons activement l'utilisation de notre contenu sur Internet et prendrons des mesures légales en cas de violation de nos droits d'auteur, y compris l'envoi de lettres de cessation et de désistement, et le dépôt de plaintes si nécessaire.</p>
+        
+        <p>Merci de respecter ces restrictions et de contribuer à faire d'AeroScape une ressource précieuse et respectée pour tous les passionnés d'aéronautique et d'exploration spatiale. Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Bonne navigation sur AeroScape !</p>
+    </div>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Fond noir */
+            color: #fff; /* Texte blanc */
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: black; /* Fond noir pour la section de contenu */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ffcc00; /* Titre en jaune */
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #ccc; /* Texte gris clair */
+        }
+
+        .legal-section {
+            background-color: #222; /* Fond gris foncé pour la section juridique */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .legal-section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffcc00; /* Titre en jaune */
+        }
+
+        .legal-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ccc; /* Texte gris clair */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Restrictions approfondie</h1>
+     
+        <div class="legal-section">
+            <h2>Clause de Propriété Intellectuelle</h2>
+            <p>Tous les contenus présents sur AeroScape, incluant mais non limité aux textes, images, vidéos, et graphismes, sont la propriété exclusive d'AeroScape ou sont utilisés avec la permission de leurs propriétaires respectifs. Aucun contenu ne peut être reproduit, modifié, distribué, republié, téléchargé, affiché, transmis ou vendu sans l'autorisation écrite préalable d'AeroScape ou des détenteurs de droits concernés, sauf dans les limites permises par la loi.</p>
+            
+            <h2>Clause de Non-Responsabilité</h2>
+            <p>AeroScape s'efforce de fournir des informations précises et à jour, mais nous ne garantissons pas l'exactitude, l'exhaustivité ou la pertinence des informations fournies. L'utilisation des informations et du contenu de ce site se fait à vos propres risques.</p>
+            
+            <h2>Clause de Responsabilité</h2>
+            <p>AeroScape, ses  partenaires et affiliés ne peuvent en aucun cas être tenus responsables des dommages directs, indirects, spéciaux, consécutifs ou exemplaires découlant de l'utilisation ou de l'impossibilité d'utilisation du site, même si AeroScape a été informé de la possibilité de tels dommages.</p>
+            
+   <div class="legal-section">
+    <h2>Clause de Juridiction et de Loi Applicable</h2>
+    <p>Ce site est contrôlé, exploité et administré par AeroScape depuis ses bureaux situés à 25 Bd Cognacq Jay, 95190 Goussainville. En accédant à ce site, vous acceptez que toutes les questions relatives à votre accès à ce site, à son utilisation et au respect de ces conditions soient régies par les lois applicables dans votre pays ou région, sans égard aux principes de conflit de lois.</p>
+</div>
+            <p>Ces restrictions d'utilisation sont contraignantes et sont applicables dès votre accès à ce site. En continuant à utiliser AeroScape, vous acceptez les termes et conditions énoncés ci-dessus. Si vous ne les acceptez pas, veuillez quitter ce site immédiatement.</p>
+            
+            <p>Si vous avez des questions concernant ces restrictions d'utilisation, veuillez nous contacter à l'adresse suivante : <a href="mailto:scapeinfoaero@gmail.com" class="souligne">scapeinfoaero@gmail.com</a>.</p>
+<style>
+
+
+
+.container {
+    background: rgba(0, 0, 50, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.radio-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    margin-left: 10px;
+}
+
+.button-group {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e90ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #104e8b;
+}
+
+#message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #32cd32;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Veuillez choisir une option :</h2>
+        <form id="validationForm">
+            <div class="radio-group">
+                <input type="radio" id="readAndValidate" name="validation" value="readAndValidate">
+                <label for="readAndValidate">✅ J'ai lu et je valide</label>
+            </div>
+            <div class="radio-group">
+                <input type="radio" id="notRead" name="validation" value="notRead">
+                <label for="notRead">❌ Je n'ai pas lu, donc je ne valide pas, je quitte le site</label>
+            </div>
+            <div class="button-group">
+                <button type="submit">Soumettre</button>
+            </div>
+        </form>
+        <div id="message"></div>
+    </div>
+<script>
+document.getElementById('validationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const selectedOption = document.querySelector('input[name="validation"]:checked');
+
+    if (selectedOption) {
+        if (selectedOption.value === 'readAndValidate') {
+            document.getElementById('message').textContent = "Merci, bienvenue chez Aeroscape !";
+        } else if (selectedOption.value === 'notRead') {
+            alert("Vous allez quitter le site.");
+            window.close();  // This line may not work in some browsers due to security restrictions
+            window.location.href = 'https://www.example.com';  // Replace with the URL you want to redirect to
+        }
+    } else {
+        alert("Veuillez choisir une option.");
+    }
+});
+</script>
+
+            
+            <p>Merci de votre compréhension et de votre coopération.</p>
+<p>Licence AéroScape:</p>
+<ul>
+     <li><a href="licence.html">licence2024</a>
+     </li>
+</ul>
+            
+            <p class="souligne">AeroScape - Tous droits réservés</p>
+        </div>
+    </div>
+</body>
+</html>
+    <footer class="footer">
+        <div class="footer-title">Suivez-nous</div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><img src="icon-facebook.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="icon-twitter.png" alt="Twitter"></a>
+            <a href="#" class="social-icon"><img src="icon-instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+    <div class="cookie-banner">
+<hr>
+        Ce site utilise des cookies pour améliorer votre expérience. En continuant, vous acceptez notre utilisation des cookies.
+<hr>
+       
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('menuDropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
+            }
+        }
+
+        // Désactiver le clic droit
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Désactiver l'inspection des éléments
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I') || (event.ctrlKey && event.shiftKey && event.key === 'C') || (event.ctrlKey && event.shiftKey && event.key === 'J') || (event.ctrlKey && event.key === 'U')) {
+                event.preventDefault();
+            }
+        });
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+</body>
+</html>

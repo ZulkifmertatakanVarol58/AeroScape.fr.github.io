@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre site Aeroscape</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: background-color 0.3s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #ffcc00;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background-color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding: 40px 20px;
+            background-color: #2b2b2b;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: invert(100%);
+            transition: filter 0.3s;
+        }
+
+        .social-icon img:hover {
+            filter: invert(70%);
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #e6b800;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">AÉROSCAPE<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+
+        <div class="dropdown" id="menuDropdown">
+            <a href="index1.html">Accueil</a>
+            <a href="aéronautique.html">Aéronautique</a>
+            <a href="aérospatiale.html">Aérospatial</a>
+            <a href="espace.html">Espace</a>
+            <a href="galerie.html">Picture galerie AéroScape</a>
+<a href="disk.html">community discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+            <button onclick="toggleContrast()">Contraste Élevé</button>
+        </div>
+    </div>
+
+    <!-- Barre de recherche Google -->
+    <div>
+        <gcse:search></gcse:search>
+    </div>
+
+    <!-- Galerie d'images -->
+    <div class="gallery">
+        <img src="mars.jpg" alt="Image 1">
+        <img src="jup.jpg" alt="Image 2">
+        <img src="neptune.jpg" alt="Image 3">
+        <img src="blackhole.jpg" alt="Image 4">
+        <img src="sat1.jpg" alt="Image 5">
+        <img src="rose.jpg" alt="Image 6">
+        <img src="airbus.jpg" alt="Image 7">
+        <img src="image8.jpg" alt="Image 8">
+        <!-- Ajoutez autant d'images que nécessaire -->
+    </div>
+
+    <script>
+        function changeLanguage(lang) {
+            var currentUrl = window.location.href;
+            var baseUrl = currentUrl.split('/');
+
+            if (lang === 'en') {
+                window.location.href = baseUrl[0] + '//' + baseUrl[2] + '/en/';
+            } else if (lang === 'fr') {
+                window.location.href = baseUrl[0] + '//' + baseUrl[2] + '/fr/';
+            }
+        }
+
+        function toggleMenu() {
+            var menuDropdown = document.getElementById('menuDropdown');
+            if (menuDropdown.style.display === 'block') {
+                menuDropdown.style.display = 'none';
+            } else {
+                menuDropdown.style.display = 'block';
+            }
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+
+    <style>
+        .high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+
+</html>

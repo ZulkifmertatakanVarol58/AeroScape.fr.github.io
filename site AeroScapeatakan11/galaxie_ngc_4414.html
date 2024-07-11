@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxie NGC 4414</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIG1.7HoCrsR7T7uQ4TQL41I3?w=270&h=270&c=6&r=0&o=5&pid=ImgGn" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0f1c;
+            color: #fff;
+        }
+        header {
+            background-color: #002147;
+            color: #fff;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #fff;
+            margin: 20px 0;
+        }
+        .content {
+            padding: 20px;
+            text-align: left;
+        }
+        footer {
+            background-color: #002147;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .menu-item {
+            position: relative;
+            padding: 10px 20px;
+            background-color: #002147;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .menu-item:hover {
+            background-color: #003366;
+        }
+        .menu-item:hover .submenu {
+            display: block;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #003366;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .submenu-item {
+            padding: 10px 20px;
+            background-color: #003366;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .submenu-item:hover {
+            background-color: #004080;
+        }
+        .menu-item a, .submenu-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .hero {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/NGC_4414_%28NASA-med%29.jpg/370px-NGC_4414_%28NASA-med%29.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #00aaff;
+        }
+        .section-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CosmoVue</h1>
+    <hr>
+    <div class="menu">
+        <div class="menu-item">
+            <a href="index58.html">Accueil</a>
+        </div>
+        <div class="menu-item">
+            Astrophysique
+            <div class="submenu">
+                <div class="submenu-item"><a href="astrophysique_intro.html">Introduction</a></div>
+                <div class="submenu-item"><a href="astrophysique_phenomenes.html">Phénomènes</a></div>
+                <div class="submenu-item"><a href="astrophysique_outils.html">Outils</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Planètes
+            <div class="submenu">
+                <div class="submenu-item"><a href="planetes_systeme_solaire.html">Système Solaire</a></div>
+                <div class="submenu-item"><a href="planetes_exoplanetes.html">Exoplanètes</a></div>
+                <div class="submenu-item"><a href="planetes_habitabilite.html">Habitabilité</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Étoiles
+            <div class="submenu">
+                <div class="submenu-item"><a href="etoiles_types.html">Types d'Étoiles</a></div>
+                <div class="submenu-item"><a href="etoiles_evolution.html">Évolution Stellaire</a></div>
+                <div class="submenu-item"><a href="etoiles_supernovas.html">Supernovas</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Galaxies
+            <div class="submenu">
+                <div class="submenu-item"><a href="galaxies_types.html">Types de Galaxies</a></div>
+                <div class="submenu-item"><a href="galaxies_formation.html">Formation</a></div>
+                <div class="submenu-item"><a href="galaxies_interactions.html">Interactions</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            Trous Noirs
+            <div class="submenu">
+                <div class="submenu-item"><a href="trous_noirs_intro.html">Introduction</a></div>
+                <div class="submenu-item"><a href="trous_noirs_types.html">Types de Trous Noirs</a></div>
+                <div class="submenu-item"><a href="trous_noirs_effets.html">Effets</a></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="hero">
+    <h2>Galaxie NGC 4414</h2>
+</div>
+
+<div class="container">
+    <div class="section-title">À propos de la Galaxie NGC 4414</div>
+    <div class="section-content">
+        <p>La galaxie NGC 4414 est une galaxie spirale située à environ 60 millions d'années-lumière dans la constellation de la Chevelure de Bérénice. Elle est connue pour sa belle structure spirale et ses nombreuses étoiles jeunes et brillantes.</p>
+        <p>Caractéristiques principales :</p>
+        <ul>
+            <li><strong>Type de galaxie</strong> : Spirale</li>
+            <li><strong>Distance</strong> : Environ 60 millions d'années-lumière</li>
+            <li><strong>Constellation</strong> : Chevelure de Bérénice</li>
+        </ul>
+        <p>Les galaxies spirales comme NGC 4414 possèdent des bras en spirale qui sont souvent des sites de formation stellaire active. Les jeunes étoiles dans ces bras illuminent les régions environnantes, créant des motifs lumineux visibles dans les images astronomiques.</p>
+        <p>NGC 4414 a été étudiée en détail par le télescope spatial Hubble, qui a fourni des images spectaculaires de ses bras spiraux et de son noyau central.</p>
+    </div>
+</div>
+<script>
+        // Empêcher l'affichage du menu contextuel avec le clic droit
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Bloquer les tentatives d'utilisation de certains raccourcis clavier
+        document.onkeydown = function (e) {
+            if (e.ctrlKey && (e.keyCode === 67 || // Ctrl+C
+                              e.keyCode === 85 || // Ctrl+U
+                              e.keyCode === 123)) { // F12
+                return false;
+            }
+        };
+
+        // Bloquer les tentatives d'utilisation de la combinaison de touches Ctrl+S
+        window.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.keyCode === 83) { // Ctrl+S
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+<footer>
+    <hr>
+    <p>&copy; 2024 CosmoVue. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>

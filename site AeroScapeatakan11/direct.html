@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missions Spatiales en Direct</title>
+    <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">AeroScape<img src="unnamed.jpg" style="max-width:15%;height:auto;"></div>
+        <div class="menu-icon" onclick="toggleDropdown()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown" id="menuDropdown">
+            <a href="index1.html">Accueil</a>
+            <a href="aéronautique.html">Aéronautique</a>
+            <a href="aérospatiale.html">Aérospatial</a>
+            <a href="espace.html">Espace</a>
+            <a href="galerie.html">Picture Galerie AéroScape</a>
+            <a href="disk.html">Community Discussion</a>
+ <a href="direct.html">Mission en Direct</a>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Missions Spatiales en Direct</h1>
+        <p>Suivez les missions spatiales en temps réel, regardez les lancements en direct et obtenez des mises à jour instantanées.</p>
+        <!-- Section de la vidéo en direct -->
+        <div class="section video-section">
+            <h2>Vidéo en Direct<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" style="max-width:15%;height:auto;"></h2>
+            <iframe src="https://www.youtube.com/embed/21X5lGlDOfg" allowfullscreen></iframe>
+        </div>
+        <!-- Section du calendrier des missions -->
+        <div class="section calendar-section">
+            <h2>Calendrier des Missions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Mission</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12 juillet 2024</td>
+                        <td>SpaceX Falcon 9</td>
+                        <td>Lancement de satellites Starlink</td>
+                    </tr>
+                    <tr>
+                        <td>18 juillet 2024</td>
+                        <td>NASA Mars Rover</td>
+                        <td>Mission d'exploration sur Mars</td>
+                    </tr>
+                    <!-- Ajoutez d'autres missions ici -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Section des mises à jour en direct -->
+        <div class="section updates-section">
+            <h2>Mises à Jour en Direct</h2>
+            <ul id="updates-list">
+                <!-- Les mises à jour en direct seront ajoutées ici par JavaScript -->
+            </ul>
+        </div>
+        <!-- Section de la galerie multimédia -->
+        <div class="section gallery-section">
+            <h2>Galerie Multimédia</h2>
+            <img src="nasa.jpg" alt="Image de mission spatiale">
+        </div>
+    </div>
+    <div class="next-mission">
+        <h3>Prochaine Mission</h3>
+        <p>NASA Artemis II - Orbite,Lune</p>
+        <p> novembre 2024</p>
+    </div>
+    <script>
+        // Fonction pour afficher/cacher le menu déroulant
+        function toggleDropdown() {
+            var dropdown = document.getElementById('menuDropdown');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Exemple de mises à jour en direct (vous pouvez les obtenir d'une API ou d'une source en temps réel)
+        const updates = [
+            "?",
+            "?",
+            "?",
+            "?",
+            // Ajoutez d'autres mises à jour ici
+        ];
+
+        // Fonction pour afficher les mises à jour en direct
+        function displayUpdates() {
+            const updatesList = document.getElementById('updates-list');
+            updates.forEach(update => {
+                const listItem = document.createElement('li');
+                listItem.textContent = update;
+                updatesList.appendChild(listItem);
+            });
+        }
+
+        // Appel de la fonction pour afficher les mises à jour à l'ouverture de la page
+        displayUpdates();
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '=' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('gesturestart', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gesturechange', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('gestureend', function(event) {
+    event.preventDefault();
+});
+    </script>
+</body>
+</html>

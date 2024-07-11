@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Form</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Links */
+.links {
+    margin: 20px 0;
+}
+
+.link {
+    text-decoration: none;
+    color: #007BFF;
+    margin: 0 10px;
+}
+
+/* Button */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Formulaire de souscription */
+.form-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.form-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form-logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+form input[type="email"], form input[type="checkbox"] {
+    margin: 10px 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <img src="pik.jpg" alt="Logo IPSA" class="logo">
+        <p class="subtitle">✈️ L'école des Ingénieurs de l'air, de l'espace et de la mobilité durable</p>
+        <div class="links">
+            <a href="index.html" class="link">AéroScape🚀</a>
+            <a href="https://www.instagram.com/atkn.varoll" target="_blank" class="link">Instagram🌐</a>
+        </div>
+        <button id="subscribeBtn" class="btn">S'abonner</button>
+    </div>
+
+    <!-- Formulaire de souscription -->
+    <div id="subscribeForm" class="form-container">
+        <div class="form-content">
+            <button id="closeForm" class="close-btn">&times;</button>
+            <img src="logo.jpg" alt="IPSA Logo" class="form-logo">
+            <h2>Subscribe to ipsa.ecole</h2>
+            <p>Stay up to date with everything important.</p>
+            <input type="email" placeholder="Email" required>
+            <label>
+                <input type="checkbox" required>
+                I agree to Linktree's Terms and Conditions and Privacy Notice. (Required)
+            </label>
+            <label>
+                <input type="checkbox">
+                I agree to my contact details being shared with ipsa.ecole, who may contact me.
+            </label>
+            <button class="btn">Subscribe</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

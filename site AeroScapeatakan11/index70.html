@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="styles12.css">
+    <!-- Ajouté pour les styles de l'éditeur -->
+    <style>
+        /* Styles pour la section des avis */
+/* Styles pour la section des avis */
+/* Styles pour la section des avis */
+#avis-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#avis-form {
+    margin-bottom: 10px;
+}
+
+#avis-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#avis-form input[type="text"],
+#avis-form input[type="email"],
+#avis-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #555;
+}
+
+#avis-form textarea {
+    height: 100px;
+}
+
+#avis-form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+#avis-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Styles pour la liste des avis */
+#avis-list {
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avis-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.avis-item p {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.avis-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.avis-item button:hover {
+    background-color: #c82333;
+}
+        /* Styles pour le menu */
+        .menu-toggle {
+            display: none;
+            color: white;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            #menu {
+                display: none; /* Masquer le menu par défaut */
+                flex-direction: column;
+                background-color: #222;
+            }
+
+            #menu.show-menu {
+                display: flex; /* Afficher le menu lorsque la classe show-menu est ajoutée */
+            }
+
+            #menu li {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Coz_logo.png" alt="Logo du site">
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul id="menu">
+            <li><a href="index70.html">Accueil</a></li>
+            <li><a href="Chtml.html">𝘾𝙤𝙙𝙚𝙕 Html</a></li>
+            <li><a href="Cjs.html">𝘾𝙤𝙙𝙚𝙕 Js in progress</a></li>
+            <li><a href="contact4.html">Contact</a></li>
+            <li><a href="login.html">Connecter vous au CodeZ</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>𝘾𝙤𝙙𝙚𝙕</h1>
+        <h4>-Accueil-</h4>
+    </header>
+    <main>
+        <section>
+            <h2>Bienvenue sur la page d'accueil</h2>
+            <p>Bienvenue sur notre site de développement de codage. <p style="color: red;"><strong>!SITE EN COURS DE DEVELOPPEMENT!</strong></p></p>
+        </section>
+      <!-- Carrousel d'images -->
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="https://static.vecteezy.com/ti/photos-gratuite/p2/1226843-developpeur-web-ecrit-du-code-gratuit-photo.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://www.shutterstock.com/image-photo/profile-side-view-portrait-attractive-600nw-2148239031.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://www.acass.fr/public/img/medium/AdobeStock555641760jpeg_63f87f3d1e718.jpeg" alt="Image 3">
+                </div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </section>
+<hr>
+        <section id="about">
+            <h2>À propos de nous</h2>
+            <p>Je suis "passionnée" par le développement web, la physique, l'astrophysique et la création de solutions innovantes. Ma mission est de fournir des ressources et des outils de "qualité" pour les développeurs de tous niveaux.</p>
+        </section>
+
+        <section id="services">
+            <h2>Nos services</h2>
+            <ul>
+                <li>Développement Web</li>
+                <li>Consultation en Technologie</li>
+                <li>Formations et Ateliers</li>
+            </ul>
+        </section>
+
+        <section id="avis-section">
+            <h2>Donnez votre avis</h2>
+            <form id="avis-form">
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+            <div id="avis-list">
+                <h3>Avis des visiteurs</h3>
+            </div>
+        </section>
+
+        <div class="cookie-banner" id="cookie-banner">
+            <p>Nous utilisons des cookies pour améliorer votre expérience. <button id="accept-cookies">Accepter</button></p>
+        </div>
+         <button class="chat-button" id="chat-button">💬</button>
+        <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+                Chatbot IA
+                <span class="close-chat" id="close-chat" onclick="closeChat()">&times;</span>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <input type="text" class="chat-input" id="chat-input" placeholder="Tapez un message..." onkeypress="handleKeyPress(event)">
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 CodEZ. Tous droits réservés.</p>
+    </footer>
+
+  
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('show-menu');
+        });
+
+        // Fonction pour créer un cookie
+        function setCookie(name, value, hours) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + hours * 60 * 60 * 1000);
+            document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + expires.toUTCString();
+        }
+
+        // Fonction pour obtenir la valeur d'un cookie
+        function getCookie(name) {
+            const cookieArr = document.cookie.split('; ');
+            for (let i = 0; i < cookieArr.length; i++) {
+                const cookiePair = cookieArr[i].split('=');
+                if (cookiePair[0] === name) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+
+        // Vérifie si l'utilisateur a déjà accepté les cookies
+        window.onload = function() {
+            const cookieBanner = document.getElementById('cookie-banner');
+            if (!getCookie('cookies_accepted')) {
+                cookieBanner.style.display = 'block';
+            }
+        };
+
+        // Événement pour accepter les cookies
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            setCookie('cookies_accepted', 'true', 4); // Le cookie expire après 4 heures
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        // Fonction pour sauvegarder l'avis dans le stockage local
+        function saveAvis(nom, email, message) {
+            const avis = {
+                nom: nom,
+                email: email,
+                message: message
+            };
+            localStorage.setItem('avis', JSON.stringify(avis));
+        }
+
+        // Fonction pour charger l'avis depuis le stockage local
+        function loadAvis() {
+            const avis = localStorage.getItem('avis');
+            if (avis) {
+                const avisObj = JSON.parse(avis);
+                addAvisToDOM(avisObj.nom, avisObj.email, avisObj.message);
+            }
+        }
+
+        // Fonction pour ajouter un avis au DOM
+        function addAvisToDOM(nom, email, message) {
+            const avisList = document.getElementById('avis-list');
+            const avisItem = document.createElement('div');
+            avisItem.classList.add('avis-item');
+            avisItem.innerHTML = `
+                <p><strong>${nom}</strong> (${email}) :</p>
+                <p>${message}</p>
+                <button onclick="deleteAvis()">Supprimer</button>
+            `;
+            avisList.appendChild(avisItem);
+        }
+
+        // Événement de soumission du formulaire d'avis
+        document.getElementById('avis-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nom = document.getElementById('nom').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            saveAvis(nom, email, message);
+            addAvisToDOM(nom, email, message);
+            document.getElementById('avis-form').reset(); // Réinitialiser le formulaire
+        });
+
+        // Charger l'avis lors du chargement de la page
+        loadAvis();
+
+
+    </script>
+<script>
+// Fonction pour supprimer un avis
+function deleteAvis(avisId) {
+    const avisElement = document.getElementById(avisId);
+    if (avisElement) {
+        avisElement.remove();
+        // Supprimer l'avis du stockage local
+        localStorage.removeItem('avis');
+    }
+}
+
+// Événement de clic sur le bouton supprimer
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.className === 'delete-button') {
+        const avisId = event.target.getAttribute('data-id');
+        deleteAvis(avisId);
+    }
+});
+        // Ajouter une fonctionnalité de carrousel d'images
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.querySelectorAll(".carousel-slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2500); // Change image every 2 seconds
+        }
+
+        showSlides()
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte du ciel interactive</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Initialisation de Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Ajout d'une grande sphère pour représenter le ciel étoilé
+        const skyGeometry = new THREE.SphereGeometry(1000, 32, 32);
+        const skyMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.BackSide });
+        const skySphere = new THREE.Mesh(skyGeometry, skyMaterial);
+        scene.add(skySphere);
+
+        // Données astronomiques simulées pour la Terre
+        const earthOrbitRadius = 200; // Rayon de l'orbite terrestre
+        const earthMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(5, 32, 32),
+            new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+        );
+        scene.add(earthMesh);
+
+        // Fonction pour positionner la Terre en fonction de la date
+        function positionnerObjetsCélestes(date) {
+            const angle = date * 0.0001; // Simulation de l'orbite en fonction de la date
+            const x = earthOrbitRadius * Math.cos(angle);
+            const y = 0;
+            const z = earthOrbitRadius * Math.sin(angle);
+            earthMesh.position.set(x, y, z);
+        }
+
+        // Fonction d'animation pour mettre à jour la scène
+        function animate() {
+            requestAnimationFrame(animate);
+            const dateActuelle = Date.now(); // Utilisation de la date actuelle
+            positionnerObjetsCélestes(dateActuelle);
+            renderer.render(scene, camera);
+        }
+
+        // Appel initial de l'animation
+        animate();
+
+        // Redimensionner la fenêtre
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
